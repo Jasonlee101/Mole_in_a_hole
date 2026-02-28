@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dosebaqe3uqrg"]
 
 [ext_resource type="Texture2D" uid="uid://bth5i35laf2us" path="res://assets/sprites/world_tileset.png" id="1_5l4w1"]
+[ext_resource type="Script" uid="uid://rou4060sw07v" path="res://scripts/brick.gd" id="2_0w5h4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5l4w1"]
 atlas = ExtResource("1_5l4w1")
@@ -20,11 +21,14 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5l4w1"]
 size = Vector2(16, 16)
 
-[node name="Area2D" type="Area2D" unique_id=1553344906]
+[node name="brick" type="Area2D" unique_id=1553344906]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2108949181]
 sprite_frames = SubResource("SpriteFrames_0w5h4")
 animation = &"idle"
+script = ExtResource("2_0w5h4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1278645134]
 shape = SubResource("RectangleShape2D_5l4w1")
+
+[connection signal="body_shape_entered" from="." to="AnimatedSprite2D" method="_on_brick_body_shape_entered"]
