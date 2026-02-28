@@ -16,3 +16,5 @@ shape = SubResource("CircleShape2D_0hol4")
 [node name="Icon" type="Sprite2D" parent="CharacterBody2D" unique_id=42286885]
 position = Vector2(693, 423)
 texture = ExtResource("2_epypp")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=151448280]
