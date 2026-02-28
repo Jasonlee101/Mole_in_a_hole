@@ -43,4 +43,3 @@ func _physics_process(delta: float) -> void:
 
 func _process(_delta):
 	hand_pivot.look_at(get_global_mouse_position())
-	
