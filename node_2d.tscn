@@ -18,3 +18,5 @@ position = Vector2(693, 423)
 texture = ExtResource("2_epypp")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=151448280]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1696516767]
