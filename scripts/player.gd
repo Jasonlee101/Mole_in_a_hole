@@ -6,6 +6,8 @@ const JUMP_VELOCITY = -300.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var hand_pivot = $HandPivot
+@onready var pickaxe_sprite = $HandPivot/Pickaxe
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -38,3 +40,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+func _process(_delta):
+	hand_pivot.look_at(get_global_mouse_position())
+	

@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://croorhenr8q6c"]
+[gd_scene format=3 uid="uid://dyq34ko0iq8gm"]
 
 [ext_resource type="Script" uid="uid://ij2lnuv2riqt" path="res://scripts/slime.gd" id="1_n6pvg"]
 [ext_resource type="Texture2D" uid="uid://dvholik3v47nm" path="res://assets/sprites/slime_green.png" id="1_p2gj0"]
-[ext_resource type="PackedScene" uid="uid://ci5505cxd3vhv" path="res://scenes/killzone.tscn" id="2_n6pvg"]
+[ext_resource type="PackedScene" uid="uid://bmorfmwgd5orj" path="res://scenes/killzone.tscn" id="2_n6pvg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pjw23"]
 atlas = ExtResource("1_p2gj0")
@@ -43,6 +43,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0l8pv"]
 size = Vector2(10, 12)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n6pvg"]
+size = Vector2(16, 14)
+
 [node name="Slime" type="Node2D" unique_id=1270955932]
 script = ExtResource("1_n6pvg")
 
@@ -67,3 +70,9 @@ target_position = Vector2(11, 0)
 [node name="RayCastLeft" type="RayCast2D" parent="." unique_id=2075641524]
 position = Vector2(0, -6)
 target_position = Vector2(-11, 0)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=280015104]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1364908373]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_n6pvg")

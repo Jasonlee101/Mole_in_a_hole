@@ -1,7 +1,8 @@
-[gd_scene format=3 uid="uid://baje80lg3quet"]
+[gd_scene format=3 uid="uid://b3om3t7rdqi7o"]
 
 [ext_resource type="Texture2D" uid="uid://c6323f7e2ykb7" path="res://assets/sprites/knight.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://cbl1485il1r71" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://dyhowmcastk7k" path="res://assets/sprites/pickaxe.png" id="3_qhqgy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_onrkg"]
 atlas = ExtResource("1_4flbx")
@@ -182,6 +183,14 @@ sprite_frames = SubResource("SpriteFrames_2hs0m")
 animation = &"jump"
 autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=265038417]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=265038417 groups=["player"]]
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_1jxqw")
+
+[node name="HandPivot" type="Node2D" parent="." unique_id=1735048373]
+
+[node name="Pickaxe" type="Sprite2D" parent="HandPivot" unique_id=1264916389]
+position = Vector2(0, -7)
+rotation = -0.7853982
+scale = Vector2(0.65625, 0.65625)
+texture = ExtResource("3_qhqgy")

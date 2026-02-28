@@ -1,60 +1,70 @@
 [gd_scene format=3 uid="uid://dc6sbs4blrat1"]
 
 [ext_resource type="Texture2D" uid="uid://bth5i35laf2us" path="res://assets/sprites/world_tileset.png" id="1_5l4w1"]
-[ext_resource type="Script" path="res://scripts/brick.gd" id="2_0w5h4"]
+[ext_resource type="Script" uid="uid://chcf24b8a1vuu" path="res://scripts/brick.gd" id="2_0w5h4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5l4w1"]
 size = Vector2(16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0w5h4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mekc"]
 atlas = ExtResource("1_5l4w1")
 region = Rect2(128, 16, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7mekc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_c34n8"]
 atlas = ExtResource("1_5l4w1")
 region = Rect2(128, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c34n8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0w5h4"]
 atlas = ExtResource("1_5l4w1")
-region = Rect2(192, 0, 16, 16)
+region = Rect2(96, 16, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5l4w1"]
-atlas = ExtResource("1_5l4w1")
-region = Rect2(128, 32, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_0w5h4"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_7mekc"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0w5h4")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7mekc")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_c34n8")
 }],
-"loop": true,
+"loop": false,
 "name": &"break",
-"speed": 15.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5l4w1")
+"texture": SubResource("AtlasTexture_0w5h4")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 1.0
 }]
 
-[node name="Brick" type="Area2D" unique_id=104285837]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0w5h4"]
+
+[node name="Brick" type="StaticBody2D" unique_id=1621851373]
 collision_mask = 2
 script = ExtResource("2_0w5h4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1419718906]
+[node name="Timer" type="Timer" parent="." unique_id=1027950470]
+wait_time = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=977438496]
 shape = SubResource("RectangleShape2D_5l4w1")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1943024393]
-sprite_frames = SubResource("SpriteFrames_0w5h4")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1829214577]
+sprite_frames = SubResource("SpriteFrames_7mekc")
 animation = &"idle"
 autoplay = "idle"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=575799390]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1293319798]
+shape = SubResource("RectangleShape2D_0w5h4")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_shape_entered" from="." to="." method="_on_mouse_shape_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
