@@ -3,8 +3,9 @@ extends CharacterBody2D
 const SPEED = 130.0
 const JUMP_VELOCITY = -300.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var dead = false 
 
-@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var animated_sprite = $AnimatedSprite2D
 @onready var hand_pivot = $HandPivot
 @onready var pickaxe_sprite = $HandPivot/Pickaxe
 @onready var anim_player = $HandPivot/AnimationPlayer
@@ -27,12 +28,13 @@ func _physics_process(delta: float) -> void:
 		animated_sprite.flip_h = true
 	
 	if is_on_floor():
-		if direction == 0:
-			animated_sprite.play("idle")
+		if not dead:
+			if direction == 0:
+				animated_sprite.play("idle")
+			else:
+				animated_sprite.play("run")
 		else:
-			animated_sprite.play("run")
-	else:
-		animated_sprite.play("jump")
+			animated_sprite.play("jump")
 			
 	if direction:
 		velocity.x = direction * SPEED
