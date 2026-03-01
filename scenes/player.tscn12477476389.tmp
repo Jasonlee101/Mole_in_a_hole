@@ -159,9 +159,9 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("3_qhqgy")
 }],
-"loop": false,
+"loop": true,
 "name": &"idle",
-"speed": 1.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -210,7 +210,3 @@ scale = Vector2(0.65625006, 0.65625006)
 sprite_frames = SubResource("SpriteFrames_4ni07")
 animation = &"idle"
 autoplay = "idle"
-
-[node name="Timer" type="Timer" parent="." unique_id=1190933441]
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
