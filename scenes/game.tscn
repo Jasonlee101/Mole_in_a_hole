@@ -258,13 +258,13 @@ position = Vector2(472, 1233)
 [node name="Bricks" type="Node" parent="." unique_id=1276646721]
 
 [node name="Brick" parent="Bricks" unique_id=104285837 instance=ExtResource("7_u5sy4")]
-position = Vector2(487, 119)
+position = Vector2(487, 120)
 
 [node name="Brick2" parent="Bricks" unique_id=1911126563 instance=ExtResource("7_u5sy4")]
 position = Vector2(599, 168)
 
 [node name="Brick3" parent="Bricks" unique_id=1825294920 instance=ExtResource("7_u5sy4")]
-position = Vector2(487, 135)
+position = Vector2(487, 136)
 
 [node name="Brick4" parent="Bricks" unique_id=4482902 instance=ExtResource("7_u5sy4")]
 position = Vector2(647, 472)
