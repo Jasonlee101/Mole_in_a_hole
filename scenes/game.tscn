@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://bo3oh8efkipwp"]
 
-[ext_resource type="Script" uid="uid://buu8il1jrniu3" path="res://scripts/game_manager.gd" id="1_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://b3om3t7rdqi7o" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://fxuaa6q4ywjb" path="res://assets/sprites/Tilesheet.png" id="2_vtaks"]
 [ext_resource type="PackedScene" uid="uid://bxcigxpbu5n8v" path="res://scenes/platform.tscn" id="3_lnu2h"]
@@ -63,15 +62,14 @@ size = Vector2(17, 11)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kvuet"]
 size = Vector2(48, 10)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trtic"]
+size = Vector2(96, 10)
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kvpfn"]
 normal = Vector2(1, 0)
 
 [node name="Game" type="Node2D" unique_id=2131902933]
 position = Vector2(-1, 0)
-
-[node name="GameManager" type="Node" parent="." unique_id=1269674900]
-unique_name_in_owner = true
-script = ExtResource("1_0tnpc")
 
 [node name="TileMap" type="TileMap" parent="." unique_id=523310768]
 tile_set = SubResource("TileSet_dinhu")
@@ -120,6 +118,10 @@ shape = SubResource("RectangleShape2D_kvpfn")
 position = Vector2(-37, 785)
 shape = SubResource("RectangleShape2D_kvuet")
 
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Killzone" unique_id=760203966]
+position = Vector2(131, 929)
+shape = SubResource("RectangleShape2D_trtic")
+
 [node name="Coins" type="Node" parent="." unique_id=1469722521]
 
 [node name="Coin" parent="Coins" unique_id=1032078497 instance=ExtResource("4_lbhrr")]
@@ -153,7 +155,7 @@ position = Vector2(395, 150)
 position = Vector2(679, 455)
 
 [node name="Coin11" parent="Coins" unique_id=1105610064 instance=ExtResource("4_lbhrr")]
-position = Vector2(479, 1331)
+position = Vector2(365, 1077)
 
 [node name="Coin12" parent="Coins" unique_id=1479489272 instance=ExtResource("4_lbhrr")]
 position = Vector2(415, 274)
@@ -174,7 +176,7 @@ position = Vector2(262, 695)
 position = Vector2(376, 789)
 
 [node name="Coin18" parent="Coins" unique_id=590539946 instance=ExtResource("4_lbhrr")]
-position = Vector2(669, 1306)
+position = Vector2(671, 1306)
 
 [node name="Coin19" parent="Coins" unique_id=919401803 instance=ExtResource("4_lbhrr")]
 position = Vector2(263, 886)
@@ -235,6 +237,9 @@ position = Vector2(591, 629)
 [node name="Platform3" parent="Platforms" unique_id=148594460 instance=ExtResource("3_lnu2h")]
 position = Vector2(622, 1116)
 
+[node name="Platform8" parent="Platforms" unique_id=1119598148 instance=ExtResource("3_lnu2h")]
+position = Vector2(366, 1054)
+
 [node name="Enemies" type="Node" parent="." unique_id=1866655542]
 
 [node name="Slime" parent="Enemies" unique_id=1270955932 instance=ExtResource("6_p57ef")]
@@ -250,7 +255,7 @@ position = Vector2(305, 817)
 position = Vector2(312, 993)
 
 [node name="Slime6" parent="Enemies" unique_id=765586182 instance=ExtResource("6_p57ef")]
-position = Vector2(349, 1089)
+position = Vector2(336, 1089)
 
 [node name="Slime8" parent="Enemies" unique_id=1996867697 instance=ExtResource("6_p57ef")]
 position = Vector2(320, 1185)
@@ -565,17 +570,17 @@ text = "Tap weak rocks to
 break them"
 
 [node name="Label5" type="Label" parent="Labels" unique_id=1232368600]
-offset_left = 534.0
+offset_left = 525.0
 offset_top = 1476.0
-offset_right = 789.0
+offset_right = 780.0
 offset_bottom = 1517.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("8_gee14")
 theme_override_font_sizes/font_size = 8
-text = "Good job! You 
-are now safe 
-and sound back 
-in your mole hole!"
+text = "Good job! You're 
+now safe and sound
+ back in your mole 
+hole!"
 
 [node name="fog" parent="." unique_id=1504808138 instance=ExtResource("10_vtaks")]
 visibility_layer = 2
@@ -588,3 +593,6 @@ position = Vector2(569, -330)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundries/StaticBody2D" unique_id=1719607773]
 shape = SubResource("WorldBoundaryShape2D_kvpfn")
+
+[node name="Slime" parent="." unique_id=1966431026 instance=ExtResource("6_p57ef")]
+position = Vector2(395, 1089)
