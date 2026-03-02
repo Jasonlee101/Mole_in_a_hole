@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="campfire game"
+config/name="Mole in a Hole"
 run/main_scene="uid://bo3oh8efkipwp"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"

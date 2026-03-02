@@ -55,10 +55,13 @@ sources/0 = SubResource("TileSetAtlasSource_kvpfn")
 size = Vector2(48, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kvpfn"]
-size = Vector2(33, 11)
+size = Vector2(32, 10.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dinhu"]
 size = Vector2(17, 11)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kvpfn"]
+normal = Vector2(1, 0)
 
 [node name="Game" type="Node2D" unique_id=2131902933]
 position = Vector2(-1, 0)
@@ -98,21 +101,21 @@ shape = SubResource("RectangleShape2D_vtaks")
 position = Vector2(-12.5, 48.5)
 shape = SubResource("RectangleShape2D_kvpfn")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone/CollisionShape2D" unique_id=423154195]
-position = Vector2(224.5, 48.5)
-shape = SubResource("RectangleShape2D_kvpfn")
-
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Killzone/CollisionShape2D" unique_id=199703834]
-position = Vector2(-0.5, 736.5)
+position = Vector2(-0.5, 736.25)
 shape = SubResource("RectangleShape2D_kvpfn")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Killzone/CollisionShape2D" unique_id=956111357]
-position = Vector2(272.5, 863.5)
+position = Vector2(271.5, 864.5)
 shape = SubResource("RectangleShape2D_kvpfn")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Killzone" unique_id=1180941288]
 position = Vector2(-21, -126)
 shape = SubResource("RectangleShape2D_dinhu")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Killzone" unique_id=423154195]
+position = Vector2(211, 97)
+shape = SubResource("RectangleShape2D_kvpfn")
 
 [node name="Coins" type="Node" parent="." unique_id=1469722521]
 
@@ -206,31 +209,28 @@ position = Vector2(10, -56)
 [node name="Coin30" parent="Coins" unique_id=2105232577 instance=ExtResource("4_lbhrr")]
 position = Vector2(190, 147)
 
-[node name="platforms" type="Node" parent="." unique_id=1061163467]
+[node name="Platforms" type="Node" parent="." unique_id=1061163467]
 
-[node name="Platform4" parent="platforms" unique_id=1548542220 instance=ExtResource("3_lnu2h")]
+[node name="Platform4" parent="Platforms" unique_id=1548542220 instance=ExtResource("3_lnu2h")]
 position = Vector2(239, 80)
 
-[node name="Platform5" parent="platforms" unique_id=1747113329 instance=ExtResource("3_lnu2h")]
+[node name="Platform5" parent="Platforms" unique_id=1747113329 instance=ExtResource("3_lnu2h")]
 position = Vector2(239, 122)
 
-[node name="Platform6" parent="platforms" unique_id=629270463 instance=ExtResource("3_lnu2h")]
-position = Vector2(239, 35)
+[node name="Platform6" parent="Platforms" unique_id=629270463 instance=ExtResource("3_lnu2h")]
+position = Vector2(239, 34)
 
-[node name="Platform7" parent="platforms" unique_id=1633577186 instance=ExtResource("3_lnu2h")]
+[node name="Platform7" parent="Platforms" unique_id=1633577186 instance=ExtResource("3_lnu2h")]
 position = Vector2(239, -10)
 
-[node name="Platform" parent="platforms" unique_id=1070544533 instance=ExtResource("3_lnu2h")]
+[node name="Platform" parent="Platforms" unique_id=1070544533 instance=ExtResource("3_lnu2h")]
 position = Vector2(591, 650)
 
-[node name="Platform2" parent="platforms" unique_id=347002506 instance=ExtResource("3_lnu2h")]
+[node name="Platform2" parent="Platforms" unique_id=347002506 instance=ExtResource("3_lnu2h")]
 position = Vector2(591, 629)
 
-[node name="Platform3" parent="platforms" unique_id=148594460 instance=ExtResource("3_lnu2h")]
+[node name="Platform3" parent="Platforms" unique_id=148594460 instance=ExtResource("3_lnu2h")]
 position = Vector2(622, 1116)
-
-[node name="Platform8" parent="platforms" unique_id=1478006160 instance=ExtResource("3_lnu2h")]
-position = Vector2(607, 1315)
 
 [node name="Enemies" type="Node" parent="." unique_id=1866655542]
 
@@ -405,7 +405,7 @@ position = Vector2(551, 1208)
 position = Vector2(551, 1192)
 
 [node name="Brick54" parent="Bricks" unique_id=1620824465 instance=ExtResource("7_u5sy4")]
-position = Vector2(551, 1175)
+position = Vector2(551, 1177)
 
 [node name="Brick55" parent="Bricks" unique_id=1621851373 instance=ExtResource("7_u5sy4")]
 position = Vector2(375, 568)
@@ -443,6 +443,15 @@ position = Vector2(567, 1336)
 [node name="Brick35" parent="Bricks" unique_id=2074123232 instance=ExtResource("7_u5sy4")]
 position = Vector2(374, 407)
 
+[node name="Brick36" parent="Bricks" unique_id=2041060733 instance=ExtResource("7_u5sy4")]
+position = Vector2(551, 1160)
+
+[node name="Brick37" parent="Bricks" unique_id=399814438 instance=ExtResource("7_u5sy4")]
+position = Vector2(567, 1160)
+
+[node name="Brick38" parent="Bricks" unique_id=1790855078 instance=ExtResource("7_u5sy4")]
+position = Vector2(583, 1160)
+
 [node name="Labels" type="Node" parent="." unique_id=154194728]
 
 [node name="Label11" type="Label" parent="Labels" unique_id=729190213]
@@ -466,7 +475,7 @@ offset_bottom = 142.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("8_gee14")
 theme_override_font_sizes/font_size = 8
-text = "Space to jump 
+text = "Up to jump 
 Arrow keys 
 to move"
 
@@ -492,6 +501,7 @@ theme_override_font_sizes/font_size = 8
 text = "Avoid enemies!"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Labels" unique_id=963411176]
+visible = false
 
 [node name="ScoreLabel" type="Label" parent="Labels/CanvasLayer" unique_id=1532474103]
 z_index = 20
@@ -504,29 +514,21 @@ theme_override_fonts/font = ExtResource("8_gee14")
 text = "score"
 script = ExtResource("11_kvpfn")
 
-[node name="Label6" type="Label" parent="Labels" unique_id=578066202]
-offset_left = 193.0
-offset_top = -88.0
-offset_right = 422.0
-offset_bottom = -47.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("8_gee14")
-theme_override_font_sizes/font_size = 8
-text = "Quick! Back under the 
-surface!"
-
 [node name="Label7" type="Label" parent="Labels" unique_id=526102087]
-offset_left = 195.0
-offset_top = -135.0
-offset_right = 424.0
-offset_bottom = -94.0
+offset_left = 201.0
+offset_top = -131.0
+offset_right = 367.0
+offset_bottom = -57.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("8_gee14")
 theme_override_font_sizes/font_size = 8
 text = "Oh dear, the world has 
 fallen into a poisonous 
 wasteland. Avoid the
-poison gas!"
+poison gas!
+
+Quick! Back under the 
+surface!"
 
 [node name="Label8" type="Label" parent="Labels" unique_id=1558709458]
 offset_left = 395.0
@@ -557,8 +559,8 @@ offset_bottom = 202.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("8_gee14")
 theme_override_font_sizes/font_size = 8
-text = "Tap to break the 
-weak rocks"
+text = "Tap weak rocks to 
+break them"
 
 [node name="Label5" type="Label" parent="Labels" unique_id=1232368600]
 offset_left = 534.0
@@ -575,3 +577,10 @@ in your mole hole!"
 
 [node name="fog" parent="." unique_id=1504808138 instance=ExtResource("10_vtaks")]
 position = Vector2(569, -330)
+
+[node name="Boundries" type="Node" parent="." unique_id=317817920]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Boundries" unique_id=1943822110]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundries/StaticBody2D" unique_id=1719607773]
+shape = SubResource("WorldBoundaryShape2D_kvpfn")
