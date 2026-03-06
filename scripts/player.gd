@@ -15,7 +15,6 @@ var direction = 0
 @onready var jump_sound = $JumpSound
 
 func _physics_process(delta: float):
-	
 	if not is_on_floor(): # Add the gravity.
 		velocity.y += gravity * delta
 
@@ -50,10 +49,9 @@ func _physics_process(delta: float):
 
 func _process(_delta):
 	hand_pivot.look_at(get_global_mouse_position()) 	# Make the pickaxe pivot point at mouse
-
+	
 	var mouse_pos = get_global_mouse_position() 	# Keep the pickaxe upright when aiming left
 	if mouse_pos.x < global_position.x:
 		hand_pivot.scale.y = -1
 	else:
 		hand_pivot.scale.y = 1
-		

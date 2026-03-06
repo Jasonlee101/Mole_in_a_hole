@@ -8,7 +8,7 @@ extends StaticBody2D
 @onready var area_2d = $Area2D
 var health = 3
 
-@export var interaction_range: float = 50.0
+@export var interaction_range: float = 30.0
 @onready var player = get_tree().get_first_node_in_group('player')
 
 
@@ -22,7 +22,6 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int):
 				var distance = global_position.distance_to(player.global_position)
 				if distance <= interaction_range:
 					tap_sound.play()
-					print(health)
 					health -= 1 
 
 func _process(_delta: float):
