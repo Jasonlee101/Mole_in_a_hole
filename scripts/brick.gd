@@ -23,11 +23,10 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int):
 				if distance <= interaction_range:
 					tap_sound.play()
 					health -= 1 
+					animated_sprite.play(str(health))
 
 func _process(_delta: float):
-	if health >= 1:
-		animated_sprite.play(str(health))
-	else:
+	if health <= 0:
 		if area_2d:                               
 			area_2d.queue_free()
 			area_2d = null
