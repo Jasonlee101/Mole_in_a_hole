@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bxcigxpbu5n8v" path="res://scenes/platform.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://cxf63ko2lr5u4" path="res://scenes/coin.tscn" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://bmorfmwgd5orj" path="res://scenes/killzone.tscn" id="5_iywne"]
-[ext_resource type="PackedScene" uid="uid://cblwvbceou3k6" path="res://scenes/menu.tscn" id="5_trtic"]
 [ext_resource type="PackedScene" uid="uid://dyq34ko0iq8gm" path="res://scenes/slime.tscn" id="6_p57ef"]
 [ext_resource type="PackedScene" uid="uid://dc6sbs4blrat1" path="res://scenes/brick.tscn" id="7_u5sy4"]
 [ext_resource type="FontFile" uid="uid://b007ualmmv331" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="8_gee14"]
@@ -233,8 +232,6 @@ shape = SubResource("RectangleShape2D_trtic")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone" unique_id=1212730484]
 position = Vector2(-37, -165.5)
 shape = SubResource("RectangleShape2D_ca42v")
-
-[node name="menu" parent="." unique_id=1800608211 instance=ExtResource("5_trtic")]
 
 [node name="Coins" type="Node" parent="." unique_id=1469722521]
 

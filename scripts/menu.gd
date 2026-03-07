@@ -1,16 +1,16 @@
 extends Control
 
+signal menu_dismissed
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	set_process_input(true)
-	print("menu started")
 
 
 func input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
+		print("MenuScreen: Space pressed! sending signal...")
 		_on_start_pressed()
-		print("input recieved")
 		
 
 	
