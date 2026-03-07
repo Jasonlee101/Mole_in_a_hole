@@ -7,13 +7,15 @@ extends Node2D
 var menu_instance
 var cutscene_instance
 var game_started = false
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
-	print("Game started, loading title screen...")
-	menu_instance = menu_scene.instantiate()
-	add_child(menu_instance)
-	
-	menu_instance.menu_dismissed.connect(_on_menu_dismissed)
+	if Global.has_finished_intro:
+		load_game_directly()
+	else:
+		print("Game started, loading title screen...") 
+		menu_instance = menu_scene.instantiate() 
+		add_child(menu_instance) 
+		menu_instance.menu_dismissed.connect(_on_menu_dismissed)
 
 func _on_menu_dismissed() -> void:
 	if game_started: return
@@ -21,19 +23,21 @@ func _on_menu_dismissed() -> void:
 	print("Bootstrap: Signal recieved! Loading Cutscene...")
 	if is_instance_valid(menu_instance):		
 		menu_instance.queue_free()
-	
-	
-	
 	cutscene_instance = cutscene_scene.instantiate()
 	add_child(cutscene_instance)
 	
 	cutscene_instance.finished.connect(_on_cutscene_finished)
 	
 func _on_cutscene_finished() -> void:
-	print("cutscene finished")
-	if is_instance_valid(cutscene_instance):
-		cutscene_instance.queue_free()
+	print("cutscene finished") 
+	Global.has_finished_intro = true
 	
-	var game_node = game_scene.instantiate()
-	add_child(game_node)
+	if is_instance_valid(cutscene_instance): 
+		cutscene_instance.queue_free() 
+  
+	load_game_directly()
+
+func load_game_directly() -> void:
+	var game_node = game_scene.instantiate() 
+	add_child(game_node) 
 	print("loading game")
