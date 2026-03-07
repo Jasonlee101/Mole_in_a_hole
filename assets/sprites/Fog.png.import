@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://34y768o2d4uu"
-path="res://.godot/imported/Fog new.png-0a377253d3ca0089dec10ef0f49547f0.ctex"
+path="res://.godot/imported/Fog.png-3251b0c208d1b2063024ec1100d73c6c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Fog new.png"
-dest_files=["res://.godot/imported/Fog new.png-0a377253d3ca0089dec10ef0f49547f0.ctex"]
+source_file="res://assets/sprites/Fog.png"
+dest_files=["res://.godot/imported/Fog.png-3251b0c208d1b2063024ec1100d73c6c.ctex"]
 
 [params]
 
