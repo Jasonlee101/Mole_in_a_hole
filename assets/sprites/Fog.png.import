@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2cjjfxmusgx"
-path="res://.godot/imported/fog 2.png-4c6b387fb1e84a702c716ea1acf4a486.ctex"
+uid="uid://hb6kr8awnsvb"
+path="res://.godot/imported/Fog.png-3251b0c208d1b2063024ec1100d73c6c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/fog 2.png"
-dest_files=["res://.godot/imported/fog 2.png-4c6b387fb1e84a702c716ea1acf4a486.ctex"]
+source_file="res://assets/sprites/Fog.png"
+dest_files=["res://.godot/imported/Fog.png-3251b0c208d1b2063024ec1100d73c6c.ctex"]
 
 [params]
 

@@ -171,6 +171,7 @@ position = Vector2(89, 176)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=670757176]
 position = Vector2(0, -5)
+scale = Vector2(2, 2)
 zoom = Vector2(4, 4)
 limit_left = 0
 limit_top = -179
@@ -822,7 +823,4 @@ text = "Did you get all  30 gems?"
 shape = SubResource("WorldBoundaryShape2D_kvpfn")
 
 [node name="fog" parent="." unique_id=1504808138 instance=ExtResource("10_vtaks")]
-visibility_layer = 2
-z_index = 2
-position = Vector2(569, -330)
-script = null
+position = Vector2(435, -248.99997)
