@@ -21,6 +21,8 @@ func _on_body_entered(body):
 	timer.start()
 
 func _on_timer_timeout():
+	await SceneTransition.fade_out()
 	Engine.time_scale = 1
 	stats.score = 0
 	get_tree().reload_current_scene()
+	SceneTransition.fade_in()
