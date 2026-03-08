@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bl0echg17budi"]
+
+[ext_resource type="Script" uid="uid://dyhg7858ieymp" path="res://scripts/mute.gd" id="1_2ef0y"]
+[ext_resource type="Texture2D" uid="uid://3npa3tsdy0xx" path="res://assets/sprites/mute symbols/unmute.png" id="2_dped1"]
+[ext_resource type="Texture2D" uid="uid://xmmtceg8ft8d" path="res://assets/sprites/mute symbols/mute.png" id="3_vwlx7"]
+
+[node name="mute" type="CanvasLayer" unique_id=1213583261]
+layer = 100
+script = ExtResource("1_2ef0y")
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=1617318783]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1550.0
+offset_top = 10.0
+offset_right = -1510.0
+offset_bottom = 42.0
+grow_horizontal = 0
+focus_mode = 0
+toggle_mode = true
+texture_normal = ExtResource("2_dped1")
+texture_pressed = ExtResource("3_vwlx7")

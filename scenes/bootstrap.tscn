@@ -1,6 +1,12 @@
 [gd_scene format=3 uid="uid://c2ehdweujkv67"]
 
 [ext_resource type="Script" uid="uid://dbws8250ejqqd" path="res://scripts/bootstrap.gd" id="1_asbmj"]
+[ext_resource type="PackedScene" uid="uid://bl0echg17budi" path="res://scenes/mute.tscn" id="2_pslgh"]
 
 [node name="bootstrap" type="Node2D" unique_id=737265316]
 script = ExtResource("1_asbmj")
+
+[node name="mute" parent="." unique_id=1213583261 instance=ExtResource("2_pslgh")]
+offset = Vector2(1500, 0)
+scale = Vector2(4, 4)
+transform = Transform2D(4, 0, 0, 4, 1500, 0)
