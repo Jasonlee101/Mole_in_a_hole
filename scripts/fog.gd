@@ -1,11 +1,8 @@
-extends Node
+extends Area2D
+@onready var anim_player = $AnimationPlayer
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	if Global.fog_save_offset != 0.0:
+	# Seek the animation to the exact timestamp where the player saved
+		anim_player.play("fog down")
+		anim_player.seek(Global.fog_save_offset, true)

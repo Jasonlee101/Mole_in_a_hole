@@ -14,6 +14,11 @@ var direction = 0
 @onready var timer = $Timer
 @onready var jump_sound = $JumpSound
 
+func _ready() -> void:
+	# If we have a saved checkpoint position, move the player there immediately
+	if Global.last_checkpoint_pos != Vector2.ZERO:
+		global_position = Global.last_checkpoint_pos
+
 func _physics_process(delta: float):
 	if not is_on_floor(): # Add the gravity.
 		velocity.y += gravity * delta
@@ -33,7 +38,7 @@ func _physics_process(delta: float):
 				animated_sprite.play("run")
 		else:
 			animated_sprite.play("jump")
-			
+
 	if direction:
 		velocity.x = direction * SPEED
 	else:
@@ -42,11 +47,11 @@ func _physics_process(delta: float):
 
 func _unhandled_input(event: InputEvent) -> void:
 	if dead: return
-	
+
 	if event.is_action_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		jump_sound.play()
-		
+
 	if event.is_action_pressed("mine"):
 		_perform_swing()
 
