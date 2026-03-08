@@ -9,6 +9,7 @@ var cutscene_instance
 var game_started = false
 
 func _ready() -> void:
+	Global.get("has_finished_intro")
 	if Global.has_finished_intro:
 		load_game_directly()
 	else:
@@ -16,7 +17,7 @@ func _ready() -> void:
 		menu_instance = menu_scene.instantiate() 
 		add_child(menu_instance) 
 		menu_instance.menu_dismissed.connect(_on_menu_dismissed)
-
+ 
 func _on_menu_dismissed() -> void:
 	if game_started: return
 	game_started = true
