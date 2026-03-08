@@ -1,5 +1,5 @@
 extends Node
-class_name Stats
+class_name stats
 
 static var score: int = 0
 

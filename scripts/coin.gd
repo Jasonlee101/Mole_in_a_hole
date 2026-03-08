@@ -5,5 +5,5 @@ extends Area2D
 func _on_body_entered(body):
 	var death = body.dead
 	if not death: 
-		Stats.score += 1
+		stats.score += 1
 		animation_player.play("pickup")
