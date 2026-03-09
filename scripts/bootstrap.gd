@@ -36,6 +36,9 @@ func _on_menu_dismissed() -> void:
 func _on_cutscene_finished() -> void:
 	Global.has_finished_intro = true
 	
+	if get_node_or_null("/root/Music"):
+		Music.start_music()
+	
 	if is_instance_valid(cutscene_instance): 
 		cutscene_instance.queue_free() 
   
