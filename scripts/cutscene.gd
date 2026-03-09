@@ -17,6 +17,7 @@ func _input(event):
 		advance()
 	
 func advance():
+	SoundFX.play_click()
 	if is_fading: return
 	is_fading = true
 	
