@@ -2,6 +2,27 @@
 
 [ext_resource type="Script" uid="uid://cj8rd8cc41gg7" path="res://scripts/checkpoint.gd" id="1_yyywg"]
 [ext_resource type="Texture2D" uid="uid://bs42qe5caueas" path="res://assets/sprites/Checkpoint.png" id="2_ywqth"]
+[ext_resource type="Texture2D" uid="uid://c0cwq08feng5d" path="res://assets/sprites/Activation.png" id="3_vsimk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qfwh"]
+atlas = ExtResource("3_vsimk")
+region = Rect2(38, 0, 38, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lops"]
+atlas = ExtResource("3_vsimk")
+region = Rect2(76, 0, 38, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_440ol"]
+atlas = ExtResource("3_vsimk")
+region = Rect2(114, 0, 38, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1ec7"]
+atlas = ExtResource("3_vsimk")
+region = Rect2(152, 0, 38, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aaln5"]
+atlas = ExtResource("3_vsimk")
+region = Rect2(190, 0, 38, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ywqth"]
 atlas = ExtResource("2_ywqth")
@@ -67,8 +88,32 @@ region = Rect2(532, 0, 38, 48)
 atlas = ExtResource("2_ywqth")
 region = Rect2(570, 0, 38, 48)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbwmb"]
+atlas = ExtResource("3_vsimk")
+region = Rect2(0, 0, 38, 48)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_c45tw"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6qfwh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3lops")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_440ol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1ec7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aaln5")
+}],
+"loop": false,
+"name": &"activation",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ywqth")
@@ -119,8 +164,16 @@ animations = [{
 "texture": SubResource("AtlasTexture_wxh5a")
 }],
 "loop": true,
-"name": &"default",
+"name": &"active",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbwmb")
+}],
+"loop": false,
+"name": &"inactive",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_55jpe"]
@@ -132,8 +185,8 @@ script = ExtResource("1_yyywg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=347312014]
 sprite_frames = SubResource("SpriteFrames_c45tw")
-autoplay = "default"
-frame_progress = 0.52377504
+animation = &"inactive"
+autoplay = "inactive"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1407089133]
 shape = SubResource("RectangleShape2D_55jpe")
