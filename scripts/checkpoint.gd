@@ -20,14 +20,42 @@ func _on_body_entered(body: Node2D) -> void:
 
 func activate_checkpoint():
 	is_active = true
-
 	Global.last_checkpoint_pos = global_position
 	Global.has_checkpoint = true
-
+	
 	var fog_node = get_tree().get_first_node_in_group("fog")
 	if fog_node:
-		var anim_player = fog_node.get_node("AnimationPlayer")
-		Global.fog_save_offset = anim_player.current_animation_position
+		var anim_player: AnimationPlayer = fog_node.get_node("AnimationPlayer")
+		var anim: Animation = anim_player.get_animation("fog down")
+		
+		var current_time = anim_player.current_animation_position
+		var safe_time = current_time
+		
+		# SETTINGS
+		var min_safe_distance = 500.0 # Pixels of gap required
+		var time_step = 0.1           # How many seconds to jump back per check
+		
+		# Get the track index for the Killzone's position
+		# (In your fog.tscn, this was track 1)
+		var track_idx = anim.find_track("Killzone:position", Animation.TYPE_VALUE)
+		
+		# LOOP: Keep rewinding time until the distance is safe
+		# We use max(0.0, ...) to ensure we don't rewind before the start of the game
+		while safe_time > 0.0:
+			# Sample the animation to see where the Killzone would be at 'safe_time'
+			var fog_pos_at_time = anim.value_track_interpolate(track_idx, safe_time)
+			
+			# Calculate the vertical distance
+			# Note: We compare against the checkpoint's Y
+			var dist_y = abs(global_position.y - (fog_node.global_position.y + fog_pos_at_time.y))
+			
+			if dist_y >= min_safe_distance:
+				break # The distance is now safe!
+				
+			safe_time -= time_step
+			
+		Global.fog_save_offset = safe_time
+		print("Checkpoint: Fog safety rewind applied. New save time: ", safe_time)
 
 	animated_sprite.play("activating")
 
