@@ -30,36 +30,23 @@ func activate_checkpoint():
 		
 		var current_time = anim_player.current_animation_position
 		var safe_time = current_time
-		
-		# SETTINGS
+
 		var min_safe_distance = 250.0 # Increase this for a bigger gap
 		var time_step = 0.1
 		var track_idx = anim.find_track("Killzone:position", Animation.TYPE_VALUE)
-		
 		# We use the fog's global Y as the starting point
 		var fog_base_y = fog_node.global_position.y
 		
 		# LOOP: Keep rewinding
 		while safe_time > 0.0:
-			# Get the local Y from the animation
 			var local_fog_pos = anim.value_track_interpolate(track_idx, safe_time)
-			
-			# Calculate the actual Global Y of the killzone
-			# Note: We multiply by global_scale.y if your fog node is scaled!
 			var global_killzone_y = fog_base_y + (local_fog_pos.y * fog_node.global_scale.y)
-			
-			# How far is the checkpoint from the killing edge?
 			var dist_y = abs(global_position.y - global_killzone_y)
 			
-			if dist_y >= min_safe_distance:
-				break
-				
+			if dist_y >= min_safe_distance: break
 			safe_time -= time_step
-		
-		# FINAL SAFETY: Rewind an extra 0.5 seconds just to be sure 
-		# the player isn't staring right at the fog edge on spawn.
-		Global.fog_save_offset = max(0.0, safe_time - 0.5)
-		
+
+		Global.fog_save_offset = max(0.0, safe_time)
 		print("Fog distance at save: ", abs(global_position.y - (fog_base_y + (anim.value_track_interpolate(track_idx, Global.fog_save_offset).y * fog_node.global_scale.y))))
 
 	animated_sprite.play("activating")
