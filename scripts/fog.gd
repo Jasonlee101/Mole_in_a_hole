@@ -2,8 +2,7 @@ extends Area2D # Must be Area2D
 @onready var anim_player = $AnimationPlayer
 
 func _ready() -> void:
-	# 1. Start the movement animation
-	anim_player.play("fog down")
+
 	
 	# 2. If a checkpoint was saved, "Seek" to that exact second
 	if Global.fog_save_offset > 0:

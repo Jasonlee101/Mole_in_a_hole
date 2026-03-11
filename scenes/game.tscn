@@ -12,8 +12,9 @@
 [ext_resource type="FontFile" uid="uid://b007ualmmv331" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="8_gee14"]
 [ext_resource type="PackedScene" uid="uid://baqxmao8a610f" path="res://scenes/instructionsign.tscn" id="10_trtic"]
 [ext_resource type="PackedScene" uid="uid://d1h4yaxvhi6xm" path="res://scenes/fog.tscn" id="10_vtaks"]
-[ext_resource type="PackedScene" uid="uid://ktw2lh3tpmte" path="res://scenes/bat.tscn" id="11_dinhu"]
+[ext_resource type="PackedScene" path="res://scenes/bat.tscn" id="11_dinhu"]
 [ext_resource type="Script" uid="uid://c0d1lq5i4mg7m" path="res://scripts/scorelabel.gd" id="11_kvpfn"]
+[ext_resource type="Script" uid="uid://divd0ypswtjtb" path="res://scripts/fog_trigger.gd" id="15_ir15t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kvpfn"]
 texture = ExtResource("2_vtaks")
@@ -158,6 +159,9 @@ size = Vector2(80, 9)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kvpfn"]
 normal = Vector2(1, 0)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ir15t"]
+size = Vector2(34, 4)
+
 [node name="Game" type="Node2D" unique_id=2131902933]
 position = Vector2(-1, 0)
 script = ExtResource("1_kvuet")
@@ -172,12 +176,11 @@ layer_2/name = "Fore"
 layer_2/z_index = 6
 
 [node name="Player" parent="." unique_id=295882371 instance=ExtResource("1_uwrxv")]
-position = Vector2(116, 160)
+position = Vector2(104, 127)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=670757176]
 position = Vector2(0, 8)
 scale = Vector2(2, 2)
-zoom = Vector2(4, 4)
 limit_left = 0
 limit_top = -179
 limit_right = 900
@@ -831,9 +834,6 @@ text = "Did you get all  30 gems?"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundries/StaticBody2D" unique_id=1719607773]
 shape = SubResource("WorldBoundaryShape2D_kvpfn")
 
-[node name="fog" parent="." unique_id=1504808138 instance=ExtResource("10_vtaks")]
-position = Vector2(371, -281)
-
 [node name="UX" type="Node" parent="." unique_id=200940314]
 
 [node name="InstructionSigns" type="Node" parent="UX" unique_id=1482170779]
@@ -848,4 +848,18 @@ position = Vector2(138, 169)
 [node name="Checkpoints" type="Node" parent="UX" unique_id=910116193]
 
 [node name="Checkpoint" parent="UX/Checkpoints" unique_id=189361673 instance=ExtResource("4_kvuet")]
-position = Vector2(673, 440)
+position = Vector2(672, 440)
+
+[node name="fog" parent="." unique_id=1504808138 instance=ExtResource("10_vtaks")]
+position = Vector2(443, -257)
+
+[node name="FogTrigger" type="Area2D" parent="." unique_id=1040045471 node_paths=PackedStringArray("fog_to_activate")]
+collision_mask = 2
+script = ExtResource("15_ir15t")
+fog_to_activate = NodePath("../fog")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FogTrigger" unique_id=158823661]
+position = Vector2(240, -3)
+shape = SubResource("RectangleShape2D_ir15t")
+
+[connection signal="body_entered" from="FogTrigger" to="FogTrigger" method="_on_body_entered"]

@@ -73,16 +73,15 @@ scale = Vector2(10.139177, 10.139177)
 collision_mask = 2
 script = ExtResource("1_e072f")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1017888599]
+libraries/ = SubResource("AnimationLibrary_8fuky")
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1182883754]
 texture_repeat = 2
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_1o7ot")
 region_enabled = true
 region_rect = Rect2(0, 0, 1440, 200)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1017888599]
-libraries/ = SubResource("AnimationLibrary_8fuky")
-autoplay = &"fog down"
 
 [node name="Killzone" parent="." unique_id=1035503713 instance=ExtResource("3_1o7ot")]
 
