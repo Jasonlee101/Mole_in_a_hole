@@ -1,6 +1,6 @@
 extends Area2D
 
-@export_enum("move_hint") var auto_play_anim: String = "move_hint"
+@export_enum("move_hint", "jump_hint") var auto_play_anim: String = "move_hint"
 @onready var bubble = $InstructionBubble
 
 func _ready():

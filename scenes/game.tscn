@@ -839,7 +839,11 @@ position = Vector2(371, -281)
 [node name="InstructionSigns" type="Node" parent="UX" unique_id=1482170779]
 
 [node name="InstructionSign" parent="UX/InstructionSigns" unique_id=1088578647 instance=ExtResource("10_trtic")]
-position = Vector2(134, 169)
+position = Vector2(210, 153)
+auto_play_anim = "jump_hint"
+
+[node name="InstructionSign2" parent="UX/InstructionSigns" unique_id=660215611 instance=ExtResource("10_trtic")]
+position = Vector2(138, 169)
 
 [node name="Checkpoints" type="Node" parent="UX" unique_id=910116193]
 
