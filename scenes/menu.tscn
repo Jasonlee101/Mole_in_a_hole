@@ -12,7 +12,8 @@ offset_bottom = 40.0
 script = ExtResource("1_con2f")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=155376436]
-scale = Vector2(2.5, 2.5)
+position = Vector2(1.1250153, 1.7500038)
+scale = Vector2(3.9716666, 3.9850001)
 texture = ExtResource("2_mhnvy")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1426685451]
@@ -21,9 +22,9 @@ zoom = Vector2(2.5, 2.5)
 
 [node name="Label" type="Label" parent="." unique_id=800731577]
 layout_mode = 0
-offset_left = -133.0
-offset_top = 83.0
-offset_right = 159.0
-offset_bottom = 106.0
+offset_left = -135.0
+offset_top = 142.0
+offset_right = 157.0
+offset_bottom = 165.0
 theme_override_fonts/font = ExtResource("3_4ytvr")
 text = "CLICK SPACE TO START"
