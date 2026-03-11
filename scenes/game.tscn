@@ -667,9 +667,6 @@ position = Vector2(535, 1320)
 [node name="Brick84" parent="Bricks" unique_id=789302253 instance=ExtResource("7_u5sy4")]
 position = Vector2(535, 1304)
 
-[node name="InstructionSign" parent="Bricks" unique_id=1088578647 instance=ExtResource("10_trtic")]
-position = Vector2(134, 169)
-
 [node name="Labels" type="Node" parent="." unique_id=154194728]
 
 [node name="Label11" type="Label" parent="Labels" unique_id=729190213]
@@ -834,8 +831,17 @@ text = "Did you get all  30 gems?"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundries/StaticBody2D" unique_id=1719607773]
 shape = SubResource("WorldBoundaryShape2D_kvpfn")
 
-[node name="Checkpoint" parent="." unique_id=189361673 instance=ExtResource("4_kvuet")]
-position = Vector2(674, 440)
-
 [node name="fog" parent="." unique_id=1504808138 instance=ExtResource("10_vtaks")]
 position = Vector2(371, -281)
+
+[node name="UX" type="Node" parent="." unique_id=200940314]
+
+[node name="InstructionSigns" type="Node" parent="UX" unique_id=1482170779]
+
+[node name="InstructionSign" parent="UX/InstructionSigns" unique_id=1088578647 instance=ExtResource("10_trtic")]
+position = Vector2(134, 169)
+
+[node name="Checkpoints" type="Node" parent="UX" unique_id=910116193]
+
+[node name="Checkpoint" parent="UX/Checkpoints" unique_id=189361673 instance=ExtResource("4_kvuet")]
+position = Vector2(673, 440)
