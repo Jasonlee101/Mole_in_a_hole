@@ -15,6 +15,7 @@ var is_invulnerable = false
 @onready var timer = $Timer
 @onready var jump_sound = $JumpSound
 @onready var click = $Click
+@onready var slash: AnimatedSprite2D = $Slash
 
 func _ready() -> void:
 	click.top_level = true
@@ -57,7 +58,17 @@ func _unhandled_input(event: InputEvent) -> void:
 		jump_sound.play()
 
 	if event.is_action_pressed("mine"):
-		_perform_swing()
+		var mouse_pos = get_global_mouse_position()
+		var diff = mouse_pos - global_position
+		var mouse_dir = Vector2.ZERO
+
+		if abs(diff.x) > abs(diff.y):
+			mouse_dir = Vector2(sign(diff.x), 0) # Horizontal
+		else:
+			mouse_dir = Vector2(0, sign(diff.y)) # Vertical
+
+			play_slash(mouse_dir)
+			_perform_swing()
 
 	if event.is_action_pressed("minex"):
 		_handle_directional_mining()
@@ -111,8 +122,10 @@ func _handle_directional_mining():
 	# 2. Update the RayCast target
 	$MineRay.target_position = mine_dir
 	$MineRay.add_exception(self)
-	# 3. Force the RayCast to update immediately so it doesn't wait for the next frame
 	$MineRay.force_raycast_update()
+
+	play_slash(mine_dir)
+	_perform_swing()
 
 	if $MineRay.is_colliding():
 		var target = $MineRay.get_collider()
@@ -131,3 +144,21 @@ func become_invulnerable(seconds: float):
 	await get_tree().create_timer(seconds).timeout
 	is_invulnerable = false
 	modulate.a = 1.0
+
+func play_slash(dir: Vector2):
+	var vertical_offset = Vector2(0, -8) 
+	var forward_distance = 18.0
+	var final_pos = global_position + vertical_offset + (dir.normalized() * forward_distance)
+	
+	slash.global_position = final_pos
+	
+	# Orientation Logic
+	if dir.y == 0:
+		slash.rotation = 0
+		slash.flip_h = (dir.x < 0)
+	else:
+		slash.flip_h = false
+		slash.rotation = Vector2.RIGHT.angle_to(dir)
+	
+	slash.modulate.a = 1.0
+	slash.play("slash")
