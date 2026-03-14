@@ -11,10 +11,10 @@ var game_started = false
 func _ready() -> void:
 	var mute_btn = preload("res://scenes/mute.tscn")
 	add_child(mute_btn)
-	$AudioStreamPlayer.play()
 	if Global.has_finished_intro:
 		load_game_directly()
 	else:
+		$AudioStreamPlayer.play()
 		menu_instance = menu_scene.instantiate() 
 		add_child(menu_instance) 
 		menu_instance.menu_dismissed.connect(_on_menu_dismissed)
@@ -47,5 +47,6 @@ func _on_cutscene_finished() -> void:
 	load_game_directly()
 
 func load_game_directly() -> void:
+	$Music.play()
 	var game_node = game_scene.instantiate() 
 	add_child(game_node) 
