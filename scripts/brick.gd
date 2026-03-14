@@ -69,7 +69,8 @@ func handle_break():
 	if break_sound:
 		break_sound.play()
 	
-	$Area2D.queue_free() # Stop more clicks
+	if $Area2D != null:
+		$Area2D.queue_free() # Stop more clicks
 	
 	var break_anim = "gem_break" if type == BrickType.GEM_CLUSTER else "break"
 	animated_sprite.play(break_anim)
