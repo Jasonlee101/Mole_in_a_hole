@@ -281,16 +281,15 @@ _data = {
 }
 
 [node name="Coin" type="Area2D" unique_id=1032078497]
+top_level = true
+z_index = 5
 collision_mask = 2
 script = ExtResource("1_i64fm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2006921980]
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_s5w7y")
-animation = &"sparkle"
 autoplay = "default"
-frame = 12
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=791103045]
 shape = SubResource("CircleShape2D_relgi")
@@ -301,5 +300,9 @@ stream = ExtResource("3_11l1o")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=574169437]
 root_node = NodePath("../pickupsound")
 libraries/ = SubResource("AnimationLibrary_wnlwo")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1876610896]
+position = Vector2(0, -1)
+target_position = Vector2(0, 10)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

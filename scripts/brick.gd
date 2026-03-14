@@ -1,44 +1,79 @@
 extends StaticBody2D
 
-@onready var timer = $Timer
+enum BrickType { NORMAL, GEM_CLUSTER }
+
+@export var type: BrickType = BrickType.NORMAL
+@export var gem_scene: PackedScene = preload("res://scenes/coin.tscn")
+@export var interaction_range: float = 40.0
+
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var tap_sound = $TapSound
 @onready var break_sound = $BreakSound
-@onready var animation_player = $AnimationPlayer
-@onready var area_2d = $Area2D
-var health = 3
-
-@export var interaction_range: float = 30.0
 @onready var player = get_tree().get_first_node_in_group('player')
 
-func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int):
-	# Use the 'event' parameter for better mouse detection
-	if event is InputEventMouseButton and Input.is_action_just_pressed("mine") and event.pressed:
+var health = 3
+
+func _ready():
+	if type == BrickType.GEM_CLUSTER:
+		animated_sprite.play("gem_3")
+		# Force Gem Clusters to stay behind the player
+		z_index = -1 
+		# If you want it to have no physics collision programmatically:
+		collision_layer = 0
+		collision_mask = 0
+	else:
+		animated_sprite.play("3")
+		z_index = 0
+		# Normal bricks keep their collision (Layer 1)
+		collision_layer = 1
+
+func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int):
+	if event is InputEventMouseButton and event.is_action_pressed("mine"):
 		if health >= 1:
 			if player == null:
 				player = get_tree().get_first_node_in_group("player")
+			
 			if player != null:
 				var distance = global_position.distance_to(player.global_position)
 				if distance <= interaction_range:
-					player.click.global_position = get_global_mouse_position()
-					if player.has_method("click_animation"):
-						player.click_animation(get_global_mouse_position())
+					player.click_animation(get_global_mouse_position())
 					take_damage()
 
-func _process(_delta: float):
-	if health <= 0:
-		if area_2d:                               
-			area_2d.queue_free()
-			area_2d = null
-			
-		animated_sprite.play('break')
-		animation_player.play('break')
-
 func take_damage():
-	if health >= 1:
-		health -= 1 
-		if tap_sound:
-			tap_sound.play()
-		var anim_name = str(health)
-		if animated_sprite.sprite_frames.has_animation(anim_name):
-			animated_sprite.play(str(health))
+	health -= 1
+	if tap_sound:
+		tap_sound.play()
+	
+	# Drop a gem if it's a cluster
+	if type == BrickType.GEM_CLUSTER:
+		spawn_gem()
+	
+	if health <= 0:
+		handle_break()
+	else:
+		# Play the correct frame based on type and remaining health
+		var anim_prefix = "gem_" if type == BrickType.GEM_CLUSTER else ""
+		animated_sprite.play(anim_prefix + str(health))
+
+func spawn_gem():
+	if gem_scene:
+		var gem = gem_scene.instantiate()
+		get_parent().add_child(gem)
+		gem.global_position = global_position
+		
+		# Ensure the gem has these properties
+		gem.velocity = Vector2(randf_range(-70, 70), -220) # Increased upward oomph
+		gem.is_on_floor = false
+
+func handle_break():
+	if break_sound:
+		break_sound.play()
+	
+	$Area2D.queue_free() # Stop more clicks
+	
+	var break_anim = "gem_break" if type == BrickType.GEM_CLUSTER else "break"
+	animated_sprite.play(break_anim)
+	
+	# Optional: let the animation finish before deleting the brick
+	await animated_sprite.animation_finished
+	queue_free()
