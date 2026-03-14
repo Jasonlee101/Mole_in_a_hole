@@ -63,7 +63,7 @@ flip_h = true
 position = Vector2(0, -12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone" unique_id=405162242]
-position = Vector2(0, 6)
+position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_0l8pv")
 
 [node name="RayCastRight" type="RayCast2D" parent="." unique_id=654955201]

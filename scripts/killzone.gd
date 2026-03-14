@@ -8,9 +8,12 @@ func _on_body_entered(body):
 			body.take_damage()
 			
 			if body.global_position.x < global_position.x:
-				body.velocity.x = -400
+				body.direction = -1
 			else:
-				body.velocity.x = 400
+				body.direction = 1
+
+			body.velocity.y = -300.0
+			body.velocity.x = -200
 			
 			if body.dead:
 				Engine.time_scale = 0.5

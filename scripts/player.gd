@@ -178,8 +178,7 @@ func take_damage():
 	if current_health <= 0:
 		die()
 	else:
-		velocity.y = JUMP_VELOCITY * 0.8
-		become_invulnerable(0.7)
+		become_invulnerable(1)
 
 func update_heart_ui():
 	var hearts = [
@@ -198,7 +197,7 @@ func update_heart_ui():
 func die():
 	if dead: 
 		return
-	
-	velocity = Vector2.ZERO
-	animated_sprite.play("death")
 	dead = true
+	
+
+	animated_sprite.play("death")
