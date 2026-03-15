@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://d00heapqrxuig" path="res://scripts/instructionsign.gd" id="1_rtkhm"]
 [ext_resource type="Texture2D" uid="uid://cvv78fu4yjgjo" path="res://assets/sprites/Instructions/Sign.png" id="2_4cm26"]
-[ext_resource type="Texture2D" uid="uid://djq4pc713dqxy" path="res://assets/sprites/Instructions/Three.png" id="3_4cm26"]
-[ext_resource type="Texture2D" uid="uid://cjsky5li3in6j" path="res://assets/sprites/Instructions/Two.png" id="3_abgd0"]
-[ext_resource type="Texture2D" uid="uid://6u5q48pjd1h3" path="res://assets/sprites/Instructions/One.png" id="4_m6d2m"]
+[ext_resource type="Texture2D" path="res://assets/sprites/Instructions/Three.png" id="3_4cm26"]
+[ext_resource type="Texture2D" path="res://assets/sprites/Instructions/Two.png" id="3_abgd0"]
+[ext_resource type="Texture2D" uid="uid://gyshkjfqi5w6" path="res://assets/sprites/Instructions/1.png" id="3_m6d2m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qqr8l"]
 atlas = ExtResource("2_4cm26")
@@ -30,6 +30,38 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r0o5k"]
 size = Vector2(60.5, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aaeo0"]
+atlas = ExtResource("3_m6d2m")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2sxhw"]
+atlas = ExtResource("3_m6d2m")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gya14"]
+atlas = ExtResource("3_m6d2m")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxacb"]
+atlas = ExtResource("3_m6d2m")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukpu8"]
+atlas = ExtResource("3_m6d2m")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1a8ex"]
+atlas = ExtResource("3_m6d2m")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4u17o"]
+atlas = ExtResource("3_abgd0")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yu86g"]
+atlas = ExtResource("3_abgd0")
+region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_abgd0"]
 atlas = ExtResource("3_4cm26")
@@ -75,24 +107,42 @@ region = Rect2(576, 0, 64, 64)
 atlas = ExtResource("3_4cm26")
 region = Rect2(640, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4u17o"]
-atlas = ExtResource("3_abgd0")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yu86g"]
-atlas = ExtResource("3_abgd0")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_r0o5k"]
-atlas = ExtResource("4_m6d2m")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nvbsw"]
-atlas = ExtResource("4_m6d2m")
-region = Rect2(64, 0, 64, 64)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_4u17o"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aaeo0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2sxhw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gya14")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxacb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukpu8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1a8ex")
+}],
+"loop": true,
+"name": &"1",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4u17o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yu86g")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 5.0,
 "texture": SubResource("AtlasTexture_abgd0")
@@ -128,30 +178,8 @@ animations = [{
 "texture": SubResource("AtlasTexture_r82la")
 }],
 "loop": true,
-"name": &"click_hint",
+"name": &"3",
 "speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4u17o")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yu86g")
-}],
-"loop": true,
-"name": &"jump_hint",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_r0o5k")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nvbsw")
-}],
-"loop": true,
-"name": &"move_hint",
-"speed": 2.0
 }]
 
 [node name="InstructionSign" type="Area2D" unique_id=1088578647]
@@ -173,8 +201,7 @@ modulate = Color(1, 1, 1, 0)
 z_index = 5
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_4u17o")
-animation = &"click_hint"
-frame_progress = 0.7200096
+animation = &"1"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
