@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bp4rkpev5rjfe"]
 
-[ext_resource type="Script" path="res://scripts/bat.gd" id="1_48wkk"]
+[ext_resource type="Script" uid="uid://dwewm322kchgt" path="res://scripts/bat.gd" id="1_48wkk"]
 [ext_resource type="Texture2D" uid="uid://c1ac8qtyoecny" path="res://assets/sprites/Bat.png" id="2_48wkk"]
 [ext_resource type="PackedScene" uid="uid://bmorfmwgd5orj" path="res://scenes/killzone.tscn" id="3_lv0ya"]
 
@@ -43,7 +43,14 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0l8pv"]
 size = Vector2(10, 10)
 
-[node name="Bat" type="Node2D" unique_id=1270955932]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_48wkk"]
+size = Vector2(17.8846, 11.301209)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ss3tx"]
+size = Vector2(35.094, 23.021852)
+
+[node name="Bat" type="CharacterBody2D" unique_id=706802453]
+collision_mask = 3
 script = ExtResource("1_48wkk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=259293392]
@@ -67,3 +74,15 @@ target_position = Vector2(0, -13)
 [node name="RayCastDown" type="RayCast2D" parent="." unique_id=2075641524]
 position = Vector2(0, -6)
 target_position = Vector2(0, 6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=218751085]
+position = Vector2(0, -7)
+scale = Vector2(0.560267, 0.8864027)
+shape = SubResource("RectangleShape2D_48wkk")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1650122162]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1892290293]
+position = Vector2(0, -7.0000005)
+scale = Vector2(0.23928024, 0.3839699)
+shape = SubResource("RectangleShape2D_ss3tx")
