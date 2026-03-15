@@ -482,7 +482,7 @@ layer_2/name = "Fore"
 layer_2/z_index = 6
 
 [node name="Player" parent="." unique_id=295882371 instance=ExtResource("1_uwrxv")]
-position = Vector2(70, 177)
+position = Vector2(69, 192)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=670757176]
 position = Vector2(0, 8)
@@ -632,7 +632,7 @@ position = Vector2(392, 1225)
 position = Vector2(424, 1113)
 
 [node name="Gem17" parent="Coins" unique_id=1228246048 instance=ExtResource("16_pl11u")]
-position = Vector2(703, 1108)
+position = Vector2(702, 1120)
 
 [node name="Gem18" parent="Coins" unique_id=428629216 instance=ExtResource("16_pl11u")]
 position = Vector2(702, 1045)
@@ -733,13 +733,13 @@ position = Vector2(656, 651)
 position = Vector2(656, 630)
 
 [node name="Platform8" parent="Platforms" unique_id=1677403444 instance=ExtResource("3_lnu2h")]
-position = Vector2(703, 1124)
+position = Vector2(703, 1133)
 
 [node name="Platform3" parent="Platforms" unique_id=1070544533 instance=ExtResource("3_lnu2h")]
-position = Vector2(703, 1092)
+position = Vector2(703, 1098)
 
 [node name="Platform9" parent="Platforms" unique_id=143627213 instance=ExtResource("3_lnu2h")]
-position = Vector2(703, 1061)
+position = Vector2(703, 1063)
 
 [node name="Platform10" parent="Platforms" unique_id=463239896 instance=ExtResource("3_lnu2h")]
 position = Vector2(703, 1029)
@@ -1001,7 +1001,7 @@ position = Vector2(343, 921)
 position = Vector2(342, 1015)
 
 [node name="Brick12" parent="Bricks" unique_id=1671767332 instance=ExtResource("7_u5sy4")]
-position = Vector2(183, 1079)
+position = Vector2(183, 1082)
 
 [node name="Brick13" parent="Bricks" unique_id=993482038 instance=ExtResource("7_u5sy4")]
 position = Vector2(728, 569)
@@ -1118,10 +1118,7 @@ position = Vector2(424, 1177)
 position = Vector2(375, 568)
 
 [node name="Brick56" parent="Bricks" unique_id=25279881 instance=ExtResource("7_u5sy4")]
-position = Vector2(183, 1095)
-
-[node name="Brick57" parent="Bricks" unique_id=2025666389 instance=ExtResource("7_u5sy4")]
-position = Vector2(183, 1111)
+position = Vector2(183, 1100)
 
 [node name="Brick58" parent="Bricks" unique_id=823918816 instance=ExtResource("7_u5sy4")]
 position = Vector2(807, 1272)
