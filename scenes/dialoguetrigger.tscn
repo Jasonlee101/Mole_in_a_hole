@@ -16,6 +16,7 @@ script = ExtResource("1_obfp7")
 shape = SubResource("RectangleShape2D_2pehf")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1351116008]
+visible = false
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=260099653]
 offset_left = 53.000008
