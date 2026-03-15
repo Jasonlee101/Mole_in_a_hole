@@ -50,7 +50,8 @@ size = Vector2(17.8846, 11.301209)
 size = Vector2(35.094, 23.021852)
 
 [node name="Bat" type="CharacterBody2D" unique_id=706802453]
-collision_mask = 3
+collision_layer = 4
+input_pickable = true
 script = ExtResource("1_48wkk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=259293392]
@@ -86,3 +87,5 @@ shape = SubResource("RectangleShape2D_48wkk")
 position = Vector2(0, -7.0000005)
 scale = Vector2(0.23928024, 0.3839699)
 shape = SubResource("RectangleShape2D_ss3tx")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

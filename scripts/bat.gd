@@ -1,46 +1,48 @@
-extends Node2D
+extends CharacterBody2D # Changed from Node2D to CharacterBody2D
 
 @export var health: int = 3
-@export var knockback_force: float = 20.0 # Adjust this in the Inspector
+@export var knockback_force: float = 20.0
 @export var interaction_range: float = 80.0
-@export var chase_range: float = 150.0 # How close the player needs to be for the bat to track them
+@export var chase_range: float = 150.0
 
-const SPEED = 60
-const CHASE_SPEED = 35 # Slower speed when tracking the player
+const SPEED = 60.0
+const CHASE_SPEED = 35.0
 var direction = -1
 
 @onready var ray_cast_up = $RayCastUp
 @onready var ray_cast_down = $RayCastDown
 @onready var animated_sprite = $AnimatedSprite2D
 
-func _process(delta):
+# Changed from _process to _physics_process
+func _physics_process(delta):
 	var player = get_tree().get_first_node_in_group("player")
 	var is_chasing = false
 	
-	# Check if the player exists and is close enough
 	if player:
 		var distance = global_position.distance_to(player.global_position)
 		if distance <= chase_range:
 			is_chasing = true
 			
-			# Calculate the direction to the player and move towards them
 			var dir_to_player = global_position.direction_to(player.global_position)
-			position += dir_to_player * CHASE_SPEED * delta
+			# Set the velocity instead of changing position directly
+			velocity = dir_to_player * CHASE_SPEED
 			
-			# Flip the sprite to face the player
 			if dir_to_player.x < 0:
-				animated_sprite.flip_h = true # Facing left
+				animated_sprite.flip_h = true
 			elif dir_to_player.x > 0:
-				animated_sprite.flip_h = false # Facing right
+				animated_sprite.flip_h = false
 
-	# If the player is NOT close, do the normal up/down patrol
 	if not is_chasing:
 		if ray_cast_up.is_colliding():
 			direction = 1
 		if ray_cast_down.is_colliding():
 			direction = -1
 		
-		position.y += direction * SPEED * delta 
+		# Move straight up or down for the patrol
+		velocity = Vector2(0, direction * SPEED)
+		
+	# This single line handles all wall collisions automatically!
+	move_and_slide()
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
