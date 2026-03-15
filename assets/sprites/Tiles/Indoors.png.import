@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7vgm2qryy20q"
-path="res://.godot/imported/Stalk.png-4cdebbf3718ffc3d11143ac903c9984f.ctex"
+uid="uid://cf7dt31k5l0ew"
+path="res://.godot/imported/Indoors.png-ce97ae1cc3b71a8f8c8364f46dec3250.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Mushrooms/Stalk.png"
-dest_files=["res://.godot/imported/Stalk.png-4cdebbf3718ffc3d11143ac903c9984f.ctex"]
+source_file="res://assets/sprites/Tiles/Indoors.png"
+dest_files=["res://.godot/imported/Indoors.png-ce97ae1cc3b71a8f8c8364f46dec3250.ctex"]
 
 [params]
 

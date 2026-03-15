@@ -16,10 +16,8 @@ var health = 3
 func _ready():
 	if type == BrickType.GEM_CLUSTER:
 		animated_sprite.play("gem_3")
-		z_index = -1 
 	else:
 		animated_sprite.play("3")
-		z_index = 0
 
 func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int):
 	# Use is_action_pressed to ensure it only triggers ONCE per click

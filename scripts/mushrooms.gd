@@ -1,7 +1,14 @@
 extends AnimatedSprite2D
 
 # This creates a dropdown menu in the Inspector
-@export_enum("Small", "Medium", "Large", 'Long BL', "Long BR", 'Long TL', "Long TR") var mushroom_type: String = "Medium"
+@export_enum(
+	"Small", 
+	"Medium", 
+	"Large", 
+	'Long BL', 
+	"Long BR", 'Long TL', 
+	"Long TR"
+	) var mushroom_type: String = "Medium"
 
 func _ready():
 	# Construct the animation name, e.g., "red_idle"

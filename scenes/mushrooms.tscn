@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://nsuw8yme85k1"]
 
-[ext_resource type="Texture2D" path="res://assets/sprites/Mushrooms/Big Mushrooms.png" id="1_g5jiy"]
-[ext_resource type="Texture2D" path="res://assets/sprites/Mushrooms/Mushrooms.png" id="1_gjkia"]
-[ext_resource type="Script" path="res://scripts/mushrooms.gd" id="2_gjkia"]
+[ext_resource type="Texture2D" uid="uid://cmcemd6mc3t3c" path="res://assets/sprites/Mushrooms/Big Mushrooms.png" id="1_g5jiy"]
+[ext_resource type="Texture2D" uid="uid://cme3cbayvn17b" path="res://assets/sprites/Mushrooms/Mushrooms.png" id="1_gjkia"]
+[ext_resource type="Script" uid="uid://cf6elmqn42n45" path="res://scripts/mushrooms.gd" id="2_gjkia"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g5jiy"]
 atlas = ExtResource("1_gjkia")
@@ -161,6 +161,5 @@ animations = [{
 [node name="Mushrooms" type="AnimatedSprite2D" unique_id=906345198]
 z_index = 7
 sprite_frames = SubResource("SpriteFrames_lqgxq")
-animation = &"Long TR"
-frame_progress = 0.69460136
+animation = &"Large"
 script = ExtResource("2_gjkia")
