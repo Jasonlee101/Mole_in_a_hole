@@ -12,14 +12,13 @@ func _ready() -> void:
 	difficulty_selector.add_item("Normal")
 	difficulty_selector.add_item("Hard")
 	difficulty_selector.selected = 1
+	_on_difficulty_changed(1)
 	difficulty_selector.item_selected.connect(_on_difficulty_changed)
 
-# FIXED: Added the underscore so Godot actually runs this function!
 func _unhandled_input(event: InputEvent) -> void:
 	if (event is InputEventKey or event is InputEventMouseButton) and event.is_pressed():
 		_on_start_pressed()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	# Make sure "Start" is mapped in your Input Map (Project -> Project Settings -> Input Map)
 	if Input.is_action_just_pressed("Start"):
@@ -30,10 +29,8 @@ func _on_start_pressed() -> void:
 	emit_signal("menu_dismissed")
 
 func _on_difficulty_changed(index: int) -> void:
-	# Prevent them from selecting the "Please Select:" option to start the game
-		
 	$Label.show()
 	match index:
-		1: Global.current_difficulty = Global.Difficulty.EASY
-		2: Global.current_difficulty = Global.Difficulty.NORMAL
-		3: Global.current_difficulty = Global.Difficulty.HARD
+		0: Global.current_difficulty = Global.Difficulty.EASY   # First item
+		1: Global.current_difficulty = Global.Difficulty.NORMAL # Second item
+		2: Global.current_difficulty = Global.Difficulty.HARD   # Third item

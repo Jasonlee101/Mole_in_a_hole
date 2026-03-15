@@ -1,6 +1,6 @@
 extends CharacterBody2D # Changed from Node2D to CharacterBody2D
 
-@export var health: int = 3
+@export var health: int = 2
 @export var knockback_force: float = 20.0
 @export var interaction_range: float = 80.0
 @export var chase_range: float = 150.0

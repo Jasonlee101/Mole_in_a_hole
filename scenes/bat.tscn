@@ -50,7 +50,7 @@ size = Vector2(17.8846, 11.301209)
 size = Vector2(35.094, 23.021852)
 
 [node name="Bat" type="CharacterBody2D" unique_id=706802453]
-collision_layer = 4
+collision_layer = 8
 input_pickable = true
 script = ExtResource("1_48wkk")
 

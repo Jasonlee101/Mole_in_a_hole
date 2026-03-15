@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var health: int = 3
-@export var knockback_force: float = 20.0 # Adjust this in the Inspector
+@export var knockback_force: float = 15.0 # Adjust this in the Inspector
 @export var interaction_range: float = 80.0
 const SPEED = 60
 var direction = -1

@@ -376,6 +376,7 @@ stream = ExtResource("7_smehm")
 [node name="MineRay" type="RayCast2D" parent="." unique_id=120294779]
 position = Vector2(0, -8)
 target_position = Vector2(40, 0)
+collision_mask = 9
 
 [node name="Slash" type="AnimatedSprite2D" parent="." unique_id=1406106026]
 position = Vector2(6, -8)

@@ -25,20 +25,17 @@ var empty_heart_rect = Rect2(16, 0 , 16,16)
 func _ready() -> void:
 	var settings = Global.get_difficulty_settings() 
 	max_health = settings.hearts
-	current_health = max_health
-	
-	var heart4 = get_node_or_null("../Labels/HUD/HeartsContainer/Heart4")
-	if heart4 != null:
-		if max_health >= 4:
-			heart4.show()
-		else:
-			heart4.hide()
+	current_health = max_health # Reset health to the new max
+	print(max_health)
+	# 2. Update the UI now that we have the right numbers
 	update_heart_ui()
+	
+	# 3. Rest of your setup
 	click.top_level = true
-	# If we have a saved checkpoint position, move the player there immediately
 	if Global.has_checkpoint:
 		global_position = Global.last_checkpoint_pos + Vector2(0, -5)
 		become_invulnerable(2.0)
+
 func _physics_process(delta: float):
 	if not is_on_floor(): # Add the gravity.
 		velocity.y += gravity * delta
@@ -189,19 +186,19 @@ func take_damage(amount: int = 1):
 		become_invulnerable(2.0)
 
 func update_heart_ui():
-	var hearts = [
-		get_node_or_null("../Labels/HUD/HeartsContainer/Heart1"),
-		get_node_or_null("../Labels/HUD/HeartsContainer/Heart2"),
-		get_node_or_null("../Labels/HUD/HeartsContainer/Heart3"),
-		get_node_or_null("../Labels/HUD/HeartsContainer/Heart4")
-	]
-	
-	for i in range(len(hearts)):
-		if hearts[i] != null:
-			if current_health > i:
-				hearts[i].region_rect = full_heart_rect
-			else:
-				hearts[i].region_rect = empty_heart_rect
+	var container = get_tree().root.find_child("HeartsContainer", true, false)
+	if not container: return
+
+	for i in range(container.get_child_count()):
+		var heart = container.get_child(i)
+		# Only show hearts up to our max_health (e.g., 1 for Hard)
+		if i < max_health:
+			heart.show()
+			# Set texture/region based on current health
+			heart.region_rect = full_heart_rect if i < current_health else empty_heart_rect
+		else:
+			# Hide the slots we aren't using for this difficulty
+			heart.hide()
 
 func die():
 	if dead: return
