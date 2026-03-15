@@ -24,6 +24,7 @@ var empty_heart_rect = Rect2(16, 0 , 16,16)
 
 
 func _ready() -> void:
+	become_invulnerable(2.0)
 	var settings = Global.get_difficulty_settings() 
 	max_health = settings.hearts
 	current_health = max_health # Reset health to the new max
@@ -34,7 +35,7 @@ func _ready() -> void:
 	# 3. Rest of your setup
 	click.top_level = true
 	if Global.has_checkpoint:
-		global_position = Global.last_checkpoint_pos + Vector2(0, -5)
+		global_position = Global.last_checkpoint_pos
 		become_invulnerable(2.0)
 
 func _physics_process(delta: float):
