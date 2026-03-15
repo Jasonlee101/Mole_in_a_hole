@@ -25,11 +25,10 @@ offset_bottom = 584.0
 scale = Vector2(14, 10)
 texture = ExtResource("1_605wg")
 
-[node name="Label" type="Label" parent="CanvasLayer/TextureRect" unique_id=1845078010]
-layout_mode = 0
-offset_left = 4.333334
-offset_top = 4.6666665
-offset_right = 360.99997
-offset_bottom = 134.66667
-scale = Vector2(0.25, 0.25)
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1845078010]
+offset_left = 113.66669
+offset_top = 590.6667
+offset_right = 470.3333
+offset_bottom = 739.6667
+scale = Vector2(3, 3)
 theme_override_fonts/font = ExtResource("2_obfp7")

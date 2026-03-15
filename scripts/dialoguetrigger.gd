@@ -3,7 +3,7 @@ extends Area2D
 @export_multiline var dialogue_text: String = "Replace this text in the inspector!"
 
 @onready var canvas_layer = $CanvasLayer
-@onready var label = $CanvasLayer/TextureRect/Label # Updated path
+@onready var label = $CanvasLayer/Label # Updated path
 
 func _ready() -> void:
 	# Hide the UI when the game starts
@@ -25,12 +25,12 @@ func _on_body_entered(body: Node2D) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	# Only listen for input if the game is paused AND this specific canvas is visible
 	if get_tree().paused and canvas_layer.visible:
-		# Check for any key press or mouse click
-		if (event is InputEventKey or event is InputEventMouseButton) and event.is_pressed():
+		# Check if the specific "interact" action was pressed (your 'Z' key)
+		if event.is_action_pressed("interact"):
 			# 1. Unpause the game
 			get_tree().paused = false
 			# 2. Destroy this trigger so it doesn't happen again
 			queue_free() 
 			
-			# Consume the input so the player doesn't accidentally swing their sword or jump
+			# Consume the input so the player doesn't accidentally do something else
 			get_viewport().set_input_as_handled()

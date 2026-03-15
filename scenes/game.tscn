@@ -952,23 +952,6 @@ theme_override_fonts/font = ExtResource("8_gee14")
 text = "score"
 script = ExtResource("11_kvpfn")
 
-[node name="Label7" type="Label" parent="Labels" unique_id=526102087]
-z_index = 100
-offset_left = 206.0
-offset_top = -120.0
-offset_right = 372.0
-offset_bottom = -46.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("8_gee14")
-theme_override_font_sizes/font_size = 8
-text = "Oh dear, the world has 
-fallen into a poisonous 
-wasteland. Avoid the
-poison gas!
-
-Quick! Back under the 
-surface!"
-
 [node name="Label8" type="Label" parent="Labels" unique_id=1558709458]
 top_level = true
 offset_left = 395.0
@@ -1094,13 +1077,11 @@ region_rect = Rect2(0, 0, 16, 16)
 [node name="DialogueTrigger" parent="Labels" unique_id=228821209 instance=ExtResource("16_37s47")]
 position = Vector2(247, -31)
 scale = Vector2(1.3947616, 0.39051586)
-dialogue_text = "Oh dear, the world has 
-fallen into a poisonous 
-wasteland. Avoid the
-poison gas!
-
-Quick! Back under the 
-surface!
+dialogue_text = "Oh dear, the world has fallen
+into a poisonous wasteland.
+Avoid the poisonous gas!
+Quick! Back under
+d the surface!
 "
 
 [node name="Boundries" type="Node" parent="." unique_id=317817920]
