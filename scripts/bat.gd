@@ -13,7 +13,8 @@ var direction = -1
 @onready var ray_cast_down = $RayCastDown
 @onready var animated_sprite = $AnimatedSprite2D
 
-# Changed from _process to _physics_process
+var gem_scene = preload("res://scenes/gem.tscn")
+
 func _physics_process(delta):
 	var player = get_tree().get_first_node_in_group("player")
 	var is_chasing = false
@@ -66,4 +67,16 @@ func take_damage():
 		tween.tween_property(self, "position:x", position.x + (knock_dir * knockback_force), 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 		
 	if health <= 0:
+		drop_gem()
 		queue_free()
+
+func drop_gem():
+	var gem = gem_scene.instantiate()
+	gem.global_position = global_position
+	gem.is_popped = true 
+
+	var horizontal_bounce = randf_range(-50.0, 50.0) # Random left/right
+	var vertical_jump = -200.0 # Negative is UP in Godot
+	
+	gem.velocity = Vector2(horizontal_bounce, vertical_jump)
+	get_parent().add_child(gem)

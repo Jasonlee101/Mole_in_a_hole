@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bh78x1mr60vd7"
-path="res://.godot/imported/Tunnel.png-9b2404c52a807bb3e27cb04fb1ad0c39.ctex"
+uid="uid://cds6on65epj7t"
+path="res://.godot/imported/Tunnels.png-cc4dfed496de1cec1db3779c8fbec400.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Tiles/Tunnel.png"
-dest_files=["res://.godot/imported/Tunnel.png-9b2404c52a807bb3e27cb04fb1ad0c39.ctex"]
+source_file="res://assets/sprites/Tiles/Tunnels.png"
+dest_files=["res://.godot/imported/Tunnels.png-cc4dfed496de1cec1db3779c8fbec400.ctex"]
 
 [params]
 

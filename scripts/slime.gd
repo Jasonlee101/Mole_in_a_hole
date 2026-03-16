@@ -57,4 +57,11 @@ func flash_white():
 func drop_gem():
 	var gem = gem_scene.instantiate()
 	gem.global_position = global_position
+	gem.is_popped = true 
+
+	var horizontal_bounce = randf_range(-50.0, 50.0) # Random left/right
+	var vertical_jump = -200.0 # Negative is UP in Godot
+	
+	gem.velocity = Vector2(horizontal_bounce, vertical_jump)
+	
 	get_parent().add_child(gem)

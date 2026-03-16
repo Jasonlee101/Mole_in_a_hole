@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" format=3 uid="uid://bdeekjxkdg767"]
 
-[ext_resource type="Texture2D" uid="uid://bh78x1mr60vd7" path="res://assets/sprites/Tiles/Tunnel.png" id="1_n6l1l"]
+[ext_resource type="Texture2D" uid="uid://cds6on65epj7t" path="res://assets/sprites/Tiles/Tunnels.png" id="1_mjpnf"]
 [ext_resource type="Texture2D" uid="uid://b7vgm2qryy20q" path="res://assets/sprites/Tiles/Stalk.png" id="2_ysbcy"]
 [ext_resource type="Texture2D" uid="uid://bwguy7t3d13jg" path="res://assets/sprites/Tiles/Mushrooms.png" id="3_mjpnf"]
 [ext_resource type="Texture2D" uid="uid://cf7dt31k5l0ew" path="res://assets/sprites/Tiles/Indoors.png" id="3_ysbcy"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cc75pc5qq66x6" path="res://assets/sprites/Tiles/Sprites.png" id="6_ysbcy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kvpfn"]
-texture = ExtResource("1_n6l1l")
+texture = ExtResource("1_mjpnf")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/animation_columns = 1
@@ -169,6 +169,10 @@ texture = ExtResource("3_ysbcy")
 4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:1/0 = 0
 3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gptel"]
 texture = ExtResource("4_mjpnf")
@@ -405,6 +409,18 @@ texture = ExtResource("6_ysbcy")
 2:0/0 = 0
 3:1/0 = 0
 3:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+4:0/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+9:0/0 = 0
 
 [resource]
 physics_layer_0/collision_layer = 1
@@ -413,5 +429,5 @@ sources/0 = SubResource("TileSetAtlasSource_kvpfn")
 sources/6 = SubResource("TileSetAtlasSource_suyxu")
 sources/7 = SubResource("TileSetAtlasSource_sgl2t")
 sources/9 = SubResource("TileSetAtlasSource_mjpnf")
-sources/11 = SubResource("TileSetAtlasSource_22448")
 sources/2 = SubResource("TileSetAtlasSource_gptel")
+sources/11 = SubResource("TileSetAtlasSource_22448")
