@@ -4,7 +4,7 @@ __Description:__ <br>
 It's a game where you play as a mole running away and hiding from the radioactive fog since the "disaster". You encounter mutant slimes, bats that track you, pointy pointy spikes, and of course the radioactive fog fallout.<br>
 You can play it here!  
 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓  
-https://lima6.itch.io/mole-in-a-hole
+https://lima6.itch.io/mole-in-a-hole  
 __images:__ <br>
 Thumbnail: <br>
 
