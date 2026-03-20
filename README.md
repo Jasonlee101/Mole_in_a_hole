@@ -10,10 +10,10 @@ Thumbnail: <br>
 Cutscene preview:
 
 <img width="315" height="250" alt="AoeM59" src="https://github.com/user-attachments/assets/dc55c123-6d78-455d-9528-3310cc38ab1e" /> <br>
-game preview:
+game preview: <br>
 
-<img width="315" height="250" alt="qmqcJV" src="https://github.com/user-attachments/assets/80aee149-a5c7-4f75-94e4-1f7304624d48" /> <br>
+<img width="315" height="250" alt="qmqcJV" src="https://github.com/user-attachments/assets/80aee149-a5c7-4f75-94e4-1f7304624d48" />
 
-<img width="315" height="250" alt="Ciiq4R" src="https://github.com/user-attachments/assets/5d3046b5-f6c6-4cdf-b655-159a60a9a173" /> <br>
+<img width="315" height="250" alt="Ciiq4R" src="https://github.com/user-attachments/assets/5d3046b5-f6c6-4cdf-b655-159a60a9a173" />
 
-<img width="315" height="250" alt="VB4S93" src="https://github.com/user-attachments/assets/802e9656-f092-4396-ab6d-49bd66705218" /> <br>
+<img width="315" height="250" alt="VB4S93" src="https://github.com/user-attachments/assets/802e9656-f092-4396-ab6d-49bd66705218" />
