@@ -8,6 +8,7 @@ class_name Enemy
 @export var gem_count: int = 1
 
 var gem_scene = preload("res://scenes/gem.tscn")
+const SLASH_SCENE = preload("res://scenes/slash_mark.tscn")
 
 var direction = 1
 var is_dead = false
@@ -56,10 +57,12 @@ func _perform_flip():
 
 	position.x += direction * 2.0
 
-func take_damage():
+func take_damage(amount: int, source_position: Vector2):
 	if is_dead: return
+	
 	health -= 1
 	flash_white()
+	spawn_hit_effects()
 
 	pre_recoil_velocity = velocity
 
@@ -81,6 +84,20 @@ func flash_white():
 	var tween = create_tween()
 	tween.tween_property(animated_sprite, "modulate", Color(10, 10, 10, 1), 0.05)
 	tween.tween_property(animated_sprite, "modulate", Color(1, 1, 1, 1), 0.05)
+
+func spawn_hit_effects():
+	var center_pos = global_position + Vector2(0, -12)
+	var sides = [-1, 1] 
+	for side in sides:
+		for i in range(2):
+			var slash = SLASH_SCENE.instantiate()
+			get_parent().add_child(slash)
+			
+			var offset = Vector2(side * randf_range(5, 12), randf_range(-8, 8))
+			slash.global_position = center_pos + offset
+			
+			if slash.has_method("setup_slash"):
+				slash.setup_slash(offset, Color.WHITE)
 
 func die(fling_dir: int):
 	is_dead = true
@@ -107,5 +124,5 @@ func spawn_gems():
 			gem.global_position = global_position
 
 			if gem is CharacterBody2D:
-				gem.is_popped = true # Enables physics in your gem.gd 
-				gem.velocity = Vector2(randf_range(-100, 100), randf_range(-150, -250))
+				gem.is_popped = true 
+				gem.velocity = Vector2(randf_range(-50, 50), randf_range(-10, -50))

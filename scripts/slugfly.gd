@@ -1,9 +1,10 @@
 extends Enemy
+@export var is_hovering: bool = false
 
 func _init():
 	gravity = 0 
 	speed = 60.0 
-	health = 3
+	health = 30
 	recoil = 150
 
 func _ready():
@@ -11,6 +12,11 @@ func _ready():
 	velocity = starting_dir * speed
 
 func handle_behavior(delta):
+	if is_hovering:
+		velocity.x = 0
+		velocity.y = 0
+		return
+
 	if ray_cast and velocity.length() > 0:
 		ray_cast.target_position = velocity.normalized() * 20.0
 

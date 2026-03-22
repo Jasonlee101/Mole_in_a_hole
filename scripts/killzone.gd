@@ -8,7 +8,7 @@ extends Area2D
 func _on_body_entered(body):
 	if body.is_in_group("player"):
 		if body.has_method("take_damage"):
-			body.take_damage(damage_amount)
+			body.take_damage(damage_amount, global_position)
 
 	if is_instakill: 
 		if body.has_method("die"):
@@ -19,6 +19,7 @@ func _on_body_entered(body):
 			body.direction = -1
 		else:
 			body.direction = 1
+
 		body.velocity.y = -300.0  
 		body.velocity.x = -200   
 

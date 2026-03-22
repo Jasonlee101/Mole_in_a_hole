@@ -641,8 +641,6 @@ layer_2/tile_data = PackedInt32Array(7733276, 524294, 3, 7733278, 589830, 3, 792
 
 [node name="Killzone" parent="." unique_id=1035503713 instance=ExtResource("5_iywne")]
 position = Vector2(413, 426)
-is_instakill = null
-damage_amount = null
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Killzone" unique_id=1438786756]
 z_index = 1
@@ -1087,7 +1085,8 @@ spikeball_type = "LeftRight"
 position = Vector2(525, 2097)
 
 [node name="Slugfly" parent="Enemies" unique_id=1506521970 instance=ExtResource("16_sww3w")]
-position = Vector2(574, 1911)
+position = Vector2(576, 1925)
+is_hovering = true
 
 [node name="Bricks" type="Node" parent="." unique_id=1276646721]
 
@@ -1685,7 +1684,7 @@ animation = &"Small"
 mushroom_type = "Small"
 
 [node name="Player" parent="." unique_id=295882371 instance=ExtResource("1_uwrxv")]
-position = Vector2(618, 1872)
+position = Vector2(625, 1935)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=718788590]
 position = Vector2(0, 8)

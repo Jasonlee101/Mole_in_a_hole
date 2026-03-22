@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://v2hlu3saangr"]
+
+[ext_resource type="Script" uid="uid://bt6022sbr3x82" path="res://scripts/slash_mark.gd" id="1_ea1dp"]
+[ext_resource type="Texture2D" uid="uid://d1a1u85ih6gra" path="res://assets/sprites/Effects/Slash marks/Damage 1.png" id="1_rjgwe"]
+[ext_resource type="Texture2D" uid="uid://b0dka7e30qhei" path="res://assets/sprites/Effects/Slash marks/Damage 2.png" id="3_j48o0"]
+
+[node name="Slash_Mark" type="Sprite2D" unique_id=1263738917]
+texture = ExtResource("1_rjgwe")
+script = ExtResource("1_ea1dp")
+slash_textures = Array[Texture2D]([ExtResource("3_j48o0"), ExtResource("1_rjgwe")])

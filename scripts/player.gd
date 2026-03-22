@@ -12,6 +12,9 @@ var current_health = 3
 var direction = 1
 var was_in_air = false
 
+var knockback_timer: float = 0.0
+var is_hurting: bool = false
+
 var upward_recoil = -350.0
 var normal_recoil = 250.0
 
@@ -23,6 +26,8 @@ var empty_heart_rect = Rect2(16, 0, 16, 16)
 @onready var slash_detector = $SlashDetector
 @onready var jump_sound = $Sound/JumpSound
 @onready var damage_sound = $Sound/DamageSound
+
+const SLASH_SCENE = preload("res://scenes/slash_mark.tscn")
 
 func _ready() -> void:
 	Global.god_mode_toggled.connect(_on_god_mode_toggled)
@@ -39,40 +44,51 @@ func _on_god_mode_toggled(enabled: bool):
 	modulate = Color(2.0, 1.7, 0.0) if enabled else Color(1, 1, 1)
 
 func _physics_process(delta: float):
+	if dead:
+		velocity.y += GRAVITY * delta
+		move_and_slide()
+		return
+
+	if knockback_timer > 0:
+		knockback_timer -= delta
+		velocity.y += GRAVITY * delta
+		move_and_slide()
+		return
+	else:
+		is_hurting = false
+
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
 		velocity.y = min(velocity.y, TERMINAL_VELOCITY)
 
-	if not dead:
-		direction = Input.get_axis("move_left", "move_right")  
-		
-		if direction > 0: animated_sprite.flip_h = false
-		elif direction < 0: animated_sprite.flip_h = true
+	direction = Input.get_axis("move_left", "move_right")  
+	if direction > 0: animated_sprite.flip_h = false
+	elif direction < 0: animated_sprite.flip_h = true
 
-		if is_on_floor() and was_in_air: 
-			if not animated_sprite.animation.begins_with("slash"):
-				animated_sprite.play("land")
+	if is_on_floor() and was_in_air: 
+		if not animated_sprite.animation.begins_with("slash"):
+			animated_sprite.play("land")
 
-		was_in_air = not is_on_floor()
+	was_in_air = not is_on_floor()
 
-		var is_slashing = animated_sprite.animation.begins_with("slash") and animated_sprite.is_playing()
-		var is_landing = animated_sprite.animation == "land" and animated_sprite.is_playing()
+	var is_slashing = animated_sprite.animation.begins_with("slash") and animated_sprite.is_playing()
+	var is_landing = animated_sprite.animation == "land" and animated_sprite.is_playing()
 
-		if not is_slashing and not is_landing:
-			if not is_on_floor():
-				if velocity.y < 0:
-					animated_sprite.play("jump") 
-				else:
-					animated_sprite.play("fall")
-			elif direction == 0:
-				animated_sprite.play("idle")
+	if not is_slashing and not is_landing:
+		if not is_on_floor():
+			if velocity.y < 0:
+				animated_sprite.play("jump") 
 			else:
-				animated_sprite.play("run")
-
-		if direction:
-			velocity.x = direction * SPEED
+				animated_sprite.play("fall")
+		elif direction == 0:
+			animated_sprite.play("idle")
 		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
+			animated_sprite.play("run")
+
+	if direction:
+		velocity.x = direction * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
 
@@ -135,7 +151,7 @@ func perform_slash():
 		for i in range(slash_detector.get_collision_count()):
 			var target = slash_detector.get_collider(i)
 			if target.has_method("take_damage"):
-				target.take_damage()
+				target.take_damage(1, global_position)
 
 func apply_recoil(dir: Vector2):
 	if dir == Vector2.DOWN:
@@ -147,13 +163,42 @@ func apply_recoil(dir: Vector2):
 	elif dir == Vector2.RIGHT:
 		velocity.x = -normal_recoil
 
-func take_damage(amount: int = 1):
-	if dead or is_invulnerable or Global.is_god_mode: return
+func take_damage(amount: int, source_position: Vector2):
+	if dead or is_invulnerable or Global.is_god_mode or is_hurting: 
+		return
+
 	damage_sound.play()
 	current_health = max(0, current_health - amount)
 	update_heart_ui()
-	if current_health <= 0: die()
-	else: become_invulnerable(1.5)
+	spawn_player_hit_effects()
+	
+	if current_health <= 0:
+		die()
+	else:
+		is_hurting = true
+		knockback_timer = 0.25
+		var knock_dir = 1 if global_position.x > source_position.x else -1
+		velocity = Vector2(knock_dir * 150, -100)
+
+		if animated_sprite.sprite_frames.has_animation("hurt"):
+			animated_sprite.play("hurt")
+			
+		become_invulnerable(1.5)
+
+func spawn_player_hit_effects():
+	var center = global_position + Vector2(0, -12)
+
+	for side in [-1, 1]:
+		for i in range(2):
+			var slash = SLASH_SCENE.instantiate()
+			get_parent().add_child(slash)
+			
+			var offset = Vector2(side * randf_range(5, 10), randf_range(-5, 5))
+			slash.global_position = center + offset
+			
+			if slash.has_method("setup_slash"):
+				print('slash')
+				slash.setup_slash(offset, Color.BLACK)
 
 func become_invulnerable(seconds: float):
 	is_invulnerable = true
