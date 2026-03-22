@@ -22,27 +22,22 @@ func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player_in_zone = false
 		hint.hide()
-		
+
 func _process(_delta):
 	if player_in_zone and Input.is_action_just_pressed("interact"):
 		start_interact_cutscene()
-		
+
 func start_interact_cutscene():
 	hint.hide()
-	# 1. TELL SCENE TRANSITION TO IGNORE PAUSE
+
 	SceneTransition.process_mode = Node.PROCESS_MODE_ALWAYS
-	
-	# 2. Fade out the game world
 	await SceneTransition.fade_out()
-	
-	# 3. Instantiate the cutscene
 	var cutscene_instance = cutscene_scene.instantiate()
-	
+
 	cutscene_instance.is_ending_cutscene = is_ending_trigger
-		
+
 	if cutscene_instance is Control:
 		cutscene_instance.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-		
 	if new_cutscene_slides.size() > 0:
 		cutscene_instance.slides = new_cutscene_slides
 	

@@ -3,9 +3,7 @@ extends Control
 @onready var difficulty_selector = $OptionButton
 signal menu_dismissed
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# This stops the OptionButton from opening when you hit Spacebar!
 	difficulty_selector.focus_mode = Control.FOCUS_NONE
 	difficulty_selector.clear()
 	difficulty_selector.add_item("Easy")
@@ -29,6 +27,6 @@ func _on_start_pressed() -> void:
 func _on_difficulty_changed(index: int) -> void:
 	$Label.show()
 	match index:
-		0: Global.current_difficulty = Global.Difficulty.EASY   # First item
-		1: Global.current_difficulty = Global.Difficulty.NORMAL # Second item
-		2: Global.current_difficulty = Global.Difficulty.HARD   # Third item
+		0: Global.current_difficulty = Global.Difficulty.EASY 
+		1: Global.current_difficulty = Global.Difficulty.NORMAL 
+		2: Global.current_difficulty = Global.Difficulty.HARD  

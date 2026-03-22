@@ -11,6 +11,7 @@ var game_started = false
 func _ready() -> void:
 	var mute_btn = preload("res://scenes/mute.tscn")
 	add_child(mute_btn)
+
 	if Global.has_finished_intro:
 		load_game_directly()
 	else:
@@ -22,24 +23,23 @@ func _ready() -> void:
 func _on_menu_dismissed() -> void:
 	if game_started: return
 	game_started = true
-	
+
 	SoundFX.play_click()
 	await SceneTransition.fade_out()
-	
-	if is_instance_valid(menu_instance):		
+
+	if is_instance_valid(menu_instance):
 		menu_instance.queue_free()
 		
 	cutscene_instance = cutscene_scene.instantiate()
 	add_child(cutscene_instance)
 	cutscene_instance.finished.connect(_on_cutscene_finished)
-	
+
 	SceneTransition.fade_in()
-	
+
 func _on_cutscene_finished() -> void:
 	$menumusic.stop()
 	$Music.play()
 	Global.has_finished_intro = true
-	
 	
 	if is_instance_valid(cutscene_instance): 
 		cutscene_instance.queue_free() 

@@ -1,7 +1,7 @@
 extends Area2D
 @export var fog_to_activate: Area2D
+
 func _ready():
-	# Connect the signal so the script knows when someone walks in
 	body_entered.connect(_on_body_entered)
 
 func _on_body_entered(body: Node2D) -> void:
@@ -16,4 +16,3 @@ func _on_body_entered(body: Node2D) -> void:
 			if anim_player:
 				anim_player.play("fog down")
 			queue_free()
-		

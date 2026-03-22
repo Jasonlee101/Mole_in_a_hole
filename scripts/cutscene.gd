@@ -17,7 +17,7 @@ func _ready() -> void:
 	if slides.size() > 0: 
 		display_slide()
 		if is_ending_cutscene and end_music:
-			end_music.volume_db = -20.0 # Start quiet (background level)
+			end_music.volume_db = -20.0
 			end_music.play()
 	else: 
 		finished.emit()
