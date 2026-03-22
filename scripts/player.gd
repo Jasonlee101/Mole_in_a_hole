@@ -114,11 +114,13 @@ func perform_slash():
 	else:
 		slash_dir = Vector2.LEFT if animated_sprite.flip_h else Vector2.RIGHT
 
-	if input_h != 0:
+	if input_v > 0.5:
+		animated_sprite.play("slash_down")
+		print("down")
+	elif input_h != 0:
 		animated_sprite.play("slash_move")
 	else:
 		animated_sprite.play("slash")
-
 	slash.visible = true
 	slash.play("slash")
 	
