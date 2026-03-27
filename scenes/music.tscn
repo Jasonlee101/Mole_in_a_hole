@@ -5,3 +5,4 @@
 [node name="Music" type="AudioStreamPlayer" unique_id=769316297]
 process_mode = 3
 stream = ExtResource("1_05ggv")
+bus = &"Music"

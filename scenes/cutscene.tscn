@@ -104,6 +104,7 @@ zoom = Vector2(5, 5)
 
 [node name="end_music" type="AudioStreamPlayer" parent="." unique_id=2064781781]
 stream = ExtResource("7_3ptll")
+bus = &"Music"
 
 [node name="TimeLabel" type="Label" parent="." unique_id=910781545]
 visible = false

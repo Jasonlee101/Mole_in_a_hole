@@ -33,7 +33,7 @@ func advance():
 	if is_fading: return
 	is_fading = true
 	
-	SoundFX.play_click()
+	SoundFX.play("Click")
 	await SceneTransition.fade_out()
 	current_slide += 1
 	

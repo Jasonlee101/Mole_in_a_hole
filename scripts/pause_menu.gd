@@ -3,7 +3,6 @@ extends CanvasLayer
 @onready var mute_button = $Mute 
 @onready var resume_button = $Resume
 
-
 func _ready():
 	hide() 
 
@@ -16,18 +15,20 @@ func _ready():
 		hud_pause_btn.pressed.connect(toggle_pause)
 
 func toggle_pause():
-	SoundFX.play_click()
+	SoundFX.play("Click")
 	var new_pause_state = !get_tree().paused
 	get_tree().paused = new_pause_state
 	visible = new_pause_state
 
+	var music_bus_index = AudioServer.get_bus_index("Music")
+
 	if new_pause_state:
-		AudioServer.set_bus_volume_db(0, -15.0)
+		AudioServer.set_bus_volume_db(music_bus_index, -15.0)
 	else:
-		AudioServer.set_bus_volume_db(0, 0.0)
+		AudioServer.set_bus_volume_db(music_bus_index, 0.0)
 
 func _on_mute_toggled():
-	SoundFX.play_click()
+	SoundFX.play("Click")
 	var is_muted = mute_button.button_pressed 
 	AudioServer.set_bus_mute(0, is_muted)
 	
@@ -39,5 +40,5 @@ func update_mute_icon():
 
 func _input(event):
 	if event.is_action_pressed("pause"):
-		SoundFX.play_click()
+		SoundFX.play("Click")
 		toggle_pause()

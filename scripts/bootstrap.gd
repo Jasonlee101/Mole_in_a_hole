@@ -21,7 +21,7 @@ func _on_menu_dismissed() -> void:
 	if game_started: return
 	game_started = true
 
-	SoundFX.play_click()
+	SoundFX.play("Click")
 	await SceneTransition.fade_out()
 
 	if is_instance_valid(menu_instance):

@@ -24,8 +24,10 @@ var empty_heart_rect = Rect2(16, 0, 16, 16)
 @onready var slash = $Slash
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var slash_detector = $SlashDetector
+
 @onready var jump_sound = $Sound/JumpSound
 @onready var damage_sound = $Sound/DamageSound
+@onready var slash_sound = $Sound/SlashSound
 
 const SLASH_SCENE = preload("res://scenes/slash_mark.tscn")
 
@@ -119,9 +121,11 @@ func perform_slash():
 		animated_sprite.play("slash_move")
 	else:
 		animated_sprite.play("slash")
+
 	slash.visible = true
+	slash_sound.play()
 	slash.play("slash")
-	
+
 	if slash_dir.x != 0:
 		animated_sprite.flip_h = (slash_dir.x < 0)
 
