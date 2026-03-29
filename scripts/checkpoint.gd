@@ -46,8 +46,7 @@ func _on_body_exited(body: Node2D) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if player_in_range and event.is_action_pressed("interact"): 
 		activate_checkpoint()
-		if SceneTransition.has_method("white_flash"):
-			SceneTransition.white_flash()
+		SceneTransition.play("white_flash")
 		flash_white()
 
 func activate_checkpoint():

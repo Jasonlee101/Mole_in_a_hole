@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://dlpvbfgyga54y"]
+
+[ext_resource type="Script" uid="uid://ccj55hi727h8o" path="res://scripts/sfx.gd" id="1_sqrre"]
+[ext_resource type="AudioStream" uid="uid://c0uv26q03har4" path="res://assets/sounds/click.wav" id="2_vnlhl"]
+[ext_resource type="AudioStream" uid="uid://dvb102jf6cbkg" path="res://assets/sounds/explosion.wav" id="3_e2ech"]
+[ext_resource type="AudioStream" uid="uid://cy2acuuy1awl8" path="res://assets/sounds/jump.wav" id="4_7mkv4"]
+[ext_resource type="AudioStream" uid="uid://dvradmh6pixkn" path="res://assets/sounds/coin.wav" id="5_x1kqs"]
+[ext_resource type="AudioStream" uid="uid://dfr85ut2bstrt" path="res://assets/sounds/save.mp3" id="6_fcgco"]
+[ext_resource type="AudioStream" uid="uid://d27bq2wpnbvu2" path="res://assets/sounds/slash.wav" id="7_p0lpm"]
+[ext_resource type="AudioStream" uid="uid://5n72javh0m0k" path="res://assets/sounds/tap.wav" id="8_wvx2h"]
+
+[node name="SFX" type="Node" unique_id=2028944158]
+script = ExtResource("1_sqrre")
+
+[node name="Click" type="AudioStreamPlayer2D" parent="." unique_id=1447928761]
+stream = ExtResource("2_vnlhl")
+volume_db = 6.0
+bus = &"SFX"
+
+[node name="Damage" type="AudioStreamPlayer2D" parent="." unique_id=90002076]
+stream = ExtResource("3_e2ech")
+volume_db = 6.0
+bus = &"SFX"
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="." unique_id=1495926766]
+stream = ExtResource("4_7mkv4")
+volume_db = -6.0
+bus = &"SFX"
+
+[node name="Coin" type="AudioStreamPlayer2D" parent="." unique_id=2057188850]
+stream = ExtResource("5_x1kqs")
+bus = &"SFX"
+
+[node name="Explosion" type="AudioStreamPlayer2D" parent="." unique_id=1010166040]
+stream = ExtResource("3_e2ech")
+bus = &"SFX"
+
+[node name="Save" type="AudioStreamPlayer2D" parent="." unique_id=969396352]
+stream = ExtResource("6_fcgco")
+bus = &"SFX"
+
+[node name="Slash" type="AudioStreamPlayer2D" parent="." unique_id=2042491055]
+stream = ExtResource("7_p0lpm")
+bus = &"SFX"
+
+[node name="Tap" type="AudioStreamPlayer2D" parent="." unique_id=725755033]
+stream = ExtResource("8_wvx2h")
+bus = &"SFX"

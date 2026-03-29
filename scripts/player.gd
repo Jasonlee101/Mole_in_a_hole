@@ -25,10 +25,6 @@ var empty_heart_rect = Rect2(16, 0, 16, 16)
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var slash_detector = $SlashDetector
 
-@onready var jump_sound = $Sound/JumpSound
-@onready var damage_sound = $Sound/DamageSound
-@onready var slash_sound = $Sound/SlashSound
-
 const SLASH_SCENE = preload("res://scenes/slash_mark.tscn")
 
 func _ready() -> void:
@@ -97,7 +93,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if dead: return
 	if event.is_action_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-		jump_sound.play()
+		SFX.play("Jump")
 	if event.is_action_pressed("mine"): 
 		perform_slash()
 
@@ -123,7 +119,7 @@ func perform_slash():
 		animated_sprite.play("slash")
 
 	slash.visible = true
-	slash_sound.play()
+	SFX.play("Slash")
 	slash.play("slash")
 
 	if slash_dir.x != 0:
@@ -177,7 +173,7 @@ func take_damage(amount: int, source_position: Vector2):
 	if dead or is_invulnerable or Global.is_god_mode or is_hurting: 
 		return
 
-	damage_sound.play()
+	SFX.play("Damage")
 	current_health = max(0, current_health - amount)
 	update_heart_ui()
 	spawn_player_hit_effects()

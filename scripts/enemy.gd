@@ -63,6 +63,7 @@ func take_damage(amount: int, source_position: Vector2):
 	health -= 1
 	flash_white()
 	spawn_hit_effects()
+	SFX.play("Damage")
 
 	pre_recoil_velocity = velocity
 

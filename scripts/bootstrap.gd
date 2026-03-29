@@ -21,8 +21,8 @@ func _on_menu_dismissed() -> void:
 	if game_started: return
 	game_started = true
 
-	SoundFX.play("Click")
-	await SceneTransition.fade_out()
+	SFX.play("Click")
+	await SceneTransition.play("fade_in")
 
 	if is_instance_valid(menu_instance):
 		menu_instance.queue_free()
@@ -31,7 +31,7 @@ func _on_menu_dismissed() -> void:
 	add_child(cutscene_instance)
 	cutscene_instance.finished.connect(_on_cutscene_finished)
 
-	SceneTransition.fade_in()
+	SceneTransition.play("fade_out")
 
 func _on_cutscene_finished() -> void:
 	$menumusic.stop()

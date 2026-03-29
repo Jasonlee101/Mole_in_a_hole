@@ -33,8 +33,8 @@ func advance():
 	if is_fading: return
 	is_fading = true
 	
-	SoundFX.play("Click")
-	await SceneTransition.fade_out()
+	SFX.play("Click")
+	await SceneTransition.play("fade_in")
 	current_slide += 1
 	
 	if current_slide >= slides.size():
@@ -44,10 +44,10 @@ func advance():
 			$TextureRect.hide() 
 			finished.emit()
 			queue_free()
-			await SceneTransition.fade_in() 
+			await SceneTransition.play("spawn_fade")
 	else:
 		display_slide()
-		await SceneTransition.fade_in()
+		await SceneTransition.play("fade_out")
 		is_fading = false
 
 func show_ending_screen():
