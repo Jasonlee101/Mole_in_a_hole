@@ -1,0 +1,176 @@
+[gd_scene format=3 uid="uid://dy3m5qq5a85i"]
+
+[ext_resource type="Script" uid="uid://deag1lk3shmqg" path="res://scripts/monster_brick.gd" id="1_wdtsg"]
+[ext_resource type="Texture2D" uid="uid://sb32d26ckjtr" path="res://assets/sprites/Monster_block.png" id="2_qvvge"]
+[ext_resource type="AudioStream" uid="uid://dvb102jf6cbkg" path="res://assets/sounds/explosion.wav" id="5_pbj7x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5l4w1"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ipw1"]
+atlas = ExtResource("2_qvvge")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pic83"]
+atlas = ExtResource("2_qvvge")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5a61"]
+atlas = ExtResource("2_qvvge")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kj18x"]
+atlas = ExtResource("2_qvvge")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0oduq"]
+atlas = ExtResource("2_qvvge")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_es2rp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ipw1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pic83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5a61")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kj18x")
+}],
+"loop": true,
+"name": &"break",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0oduq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_c34n8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BreakSound:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ci8dj"]
+resource_name = "break"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("AnimatedSprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.00064563006),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0013363957),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BreakSound:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0018832712),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.23493421),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x7yom"]
+_data = {
+&"RESET": SubResource("Animation_c34n8"),
+&"break": SubResource("Animation_ci8dj")
+}
+
+[node name="MonsterBrick" type="StaticBody2D" unique_id=1621851373 groups=["bricks"]]
+collision_layer = 9
+script = ExtResource("1_wdtsg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=977438496]
+shape = SubResource("RectangleShape2D_5l4w1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1829214577]
+sprite_frames = SubResource("SpriteFrames_es2rp")
+
+[node name="BreakSound" type="AudioStreamPlayer2D" parent="." unique_id=942988150]
+stream = ExtResource("5_pbj7x")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1854663595]
+libraries/ = SubResource("AnimationLibrary_x7yom")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_shape_entered" from="." to="." method="_on_mouse_shape_entered"]
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="ready" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_ready"]
+[connection signal="tree_entered" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_tree_entered"]

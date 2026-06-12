@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://cyaan1arrda32" path="res://assets/sprites/Mole.png" id="2_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://c2ig5ina3y58s" path="res://assets/sprites/Effects/Slash.png" id="6_fjrip"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_smehm"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_f1ej7"]
 atlas = ExtResource("2_qhqgy")
 region = Rect2(0, 54, 18, 18)
@@ -326,6 +328,10 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_qhqgy"]
 radius = 6.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hax0n"]
+atlas = ExtResource("6_fjrip")
+region = Rect2(198, 0, 22, 20)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_pf23h"]
 atlas = ExtResource("6_fjrip")
 region = Rect2(22, 0, 22, 20)
@@ -358,13 +364,15 @@ region = Rect2(154, 0, 22, 20)
 atlas = ExtResource("6_fjrip")
 region = Rect2(176, 0, 22, 20)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hax0n"]
-atlas = ExtResource("6_fjrip")
-region = Rect2(198, 0, 22, 20)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_cs1tg"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hax0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hax0n")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pf23h")
 }, {
@@ -397,19 +405,23 @@ animations = [{
 "speed": 40.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_smehm"]
-
 [node name="Player" type="CharacterBody2D" unique_id=295882371 groups=["player"]]
 z_index = 5
 collision_layer = 2
 script = ExtResource("1_g2els")
 
+[node name="SlashDetector" type="ShapeCast2D" parent="." unique_id=1056245672]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_smehm")
+target_position = Vector2(0, 0)
+collision_mask = 8
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=549937233]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_2hs0m")
-animation = &"land"
+animation = &"slash"
 autoplay = "idle"
-frame = 2
+frame = 5
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=265038417 groups=["player"]]
@@ -421,11 +433,3 @@ position = Vector2(0, -8)
 scale = Vector2(0.9090909, 0.9999999)
 sprite_frames = SubResource("SpriteFrames_cs1tg")
 animation = &"slash"
-frame = 8
-frame_progress = 1.0
-
-[node name="SlashDetector" type="ShapeCast2D" parent="." unique_id=1056245672]
-position = Vector2(0, -8)
-shape = SubResource("RectangleShape2D_smehm")
-target_position = Vector2(0, 0)
-collision_mask = 8

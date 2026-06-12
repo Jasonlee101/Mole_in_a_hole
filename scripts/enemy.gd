@@ -25,6 +25,8 @@ var death_fling_h = 150.0
 @onready var ray_cast = $RayCast
 @onready var killzone = $Killzone
 
+signal monster_died
+
 func _physics_process(delta: float):
 	if is_dead:
 		velocity.y += gravity * delta
@@ -103,6 +105,8 @@ func spawn_hit_effects():
 func die(fling_dir: int):
 	is_dead = true
 	velocity = Vector2(fling_dir * 150.0, -250.0)
+
+	monster_died.emit()
 
 	collision_layer = 0 
 	collision_mask = 1 
