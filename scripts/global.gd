@@ -55,7 +55,6 @@ func _unhandled_input(event: InputEvent):
 		var key_text = OS.get_keycode_string(event.keycode).to_upper()
 		if key_text.length() == 1 and ((key_text >= "A" and key_text <= "Z") or (key_text >= "0" and key_text <= "9")):
 			input_history += key_text
-			if is_god_mode: print(input_history)
 
 			if input_history.length() > max_history_length:
 				input_history = input_history.right(max_history_length)

@@ -19,7 +19,3 @@ func _ready() -> void:
 func _on_parent_monster_died() -> void:
 	animation.play("break")
 	animation_player.play("break")
-	# Optional: Spawn a smash/hit particle effect here
-	
-	# Destroy the block
-	queue_free()
