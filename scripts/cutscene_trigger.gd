@@ -31,7 +31,8 @@ func start_interact_cutscene():
 	hint.hide()
 
 	SceneTransition.process_mode = Node.PROCESS_MODE_ALWAYS
-	await SceneTransition.fade_out()
+	await SceneTransition.play("fade_in")
+
 	var cutscene_instance = cutscene_scene.instantiate()
 
 	cutscene_instance.is_ending_cutscene = is_ending_trigger
@@ -46,12 +47,13 @@ func start_interact_cutscene():
 	get_tree().root.add_child(cutscene_instance)
 	get_tree().paused = true
 	
-	await SceneTransition.fade_in()
+	await SceneTransition.play("fade_out")
+
 	await cutscene_instance.finished
-	await SceneTransition.fade_out()
+	await SceneTransition.play("fade_out")
 	cutscene_instance.queue_free()
 	get_tree().paused = false
 	
 	SceneTransition.process_mode = Node.PROCESS_MODE_INHERIT
 	
-	await SceneTransition.fade_in()
+	await SceneTransition.play("fade_in")

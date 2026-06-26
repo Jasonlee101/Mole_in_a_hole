@@ -60,18 +60,18 @@ func show_ending_screen():
 		tween.tween_property(end_music, "volume_db", 0.0, 2.0).set_trans(Tween.TRANS_SINE)
 		
 		Global.run_completed = true
-		var is_new_record = Global.time_elapsed < Global.high_score_time
-		Global.save_highscore()
+		#var is_new_record = Global.game_time < Global.high_score_time
+		#Global.save_highscore()
 		
 		score_label.text = "Gems Collected: " + str(Global.saved_gems)
-		time_label.text = "Time: " + Global.get_time_string()
+		time_label.text = "Time: " + Global.get_formatted_time()
 		score_label.show()
 		time_label.show()
 
 		ending_animation.show()
 		ending_animation.play("default")
 
-	await SceneTransition.fade_in()
+	await SceneTransition.play("fade_out")
 	is_fading = false
 
 func _format_time(t: float) -> String:
